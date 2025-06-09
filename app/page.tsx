@@ -39,7 +39,7 @@ export default function Home() {
     const Clients = [
         {
             url: "https://www.chevron.com/",
-            img: "/Clientes/Chevron.svg", // <-- agrega la barra
+            img: "/Clientes/Chevron.svg",
             alt: "Logotipo de Chevron",
         },
         {
@@ -61,6 +61,11 @@ export default function Home() {
             url: "https://totalenergies.com/company",
             img: "/Clientes/totalenergies.webp",
             alt: "Logotipo de TotalEnergies",
+        },
+        {
+            url: "https://www.weatherford.com/",
+            img: "/Clientes/Weatherford.png",
+            alt: "Logotipo de Weatherford",
         },
     ];
 

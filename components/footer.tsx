@@ -8,7 +8,7 @@ import {
     Phone,
     MapPin,
 } from "lucide-react";
-import { EnterpriseInfo } from "@/lib/types";
+import { EnterpriseInfo, ServicesInfo } from "@/lib/types";
 
 export default function Footer() {
     return (
@@ -102,54 +102,20 @@ export default function Footer() {
                     <div>
                         <h3 className="mb-4 text-lg font-bold">Servicios</h3>
                         <ul className="space-y-2">
-                            <li>
-                                <Link
-                                    href="/services/maintenance"
-                                    className="text-white/80 hover:text-white"
-                                >
-                                    Mantenimiento de Equipos
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/services/transport"
-                                    className="text-white/80 hover:text-white"
-                                >
-                                    Transporte Especializado
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/services/tools"
-                                    className="text-white/80 hover:text-white"
-                                >
-                                    Herramientas Especializadas
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/services/consulting"
-                                    className="text-white/80 hover:text-white"
-                                >
-                                    Consultoría Técnica
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/services/installation"
-                                    className="text-white/80 hover:text-white"
-                                >
-                                    Instalación de Sistemas
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="/services/training"
-                                    className="text-white/80 hover:text-white"
-                                >
-                                    Capacitación
-                                </Link>
-                            </li>
+                            {Object.keys(ServicesInfo.todos).map(
+                                (service: string, index: number) => (
+                                    <li key={index}>
+                                        <Link
+                                            href={`/services/${service
+                                                .toLowerCase()
+                                                .replace(/\s+/g, "-")}`}
+                                            className="text-white/80 hover:text-white"
+                                        >
+                                            {service}
+                                        </Link>
+                                    </li>
+                                )
+                            )}
                         </ul>
                     </div>
                     <div>

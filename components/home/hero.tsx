@@ -7,7 +7,7 @@ export default function HeroSection() {
     return (
         <section className="relative">
             <HeroCarousel />
-            <div className="absolute inset-0 flex items-center bg-black/30">
+            <div className="absolute inset-0 flex items-center bg-black/40">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-2xl">
                         <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">

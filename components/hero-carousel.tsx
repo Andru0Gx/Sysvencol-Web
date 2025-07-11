@@ -9,16 +9,21 @@ import { Button } from "@/components/ui/button";
 const slides = [
     {
         id: 1,
+        image: "/Home/Workshop4.webp",
+        alt: "Completación de pozos",
+    },
+    {
+        id: 2,
         image: "/Home/Workshop.webp",
         alt: "Servicios industriales",
     },
     {
-        id: 2,
+        id: 3,
         image: "/Home/Workshop2.webp",
         alt: "Equipos especializados",
     },
     {
-        id: 3,
+        id: 4,
         image: "/Home/Workshop3.webp",
         alt: "Soluciones para la industria",
     },

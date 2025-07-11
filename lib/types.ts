@@ -65,21 +65,21 @@ export const ServicesInfo = {
             title: "Completación de Pozos",
             description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
             icon: "oil-well",
-            imageUrl: "/Home/Servicio_1.webp",
+            imageUrl: "/Home/Servicio_2.webp",
             url: "/services/1"
         },
         {
             title: "Intervención de Pozos",
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             icon: "screwdriver-wrench",
-            imageUrl: "/Home/Servicio_2.webp",
+            imageUrl: "/Home/Servicio_3.webp",
             url: "/services/2"
         },
         {
-            title: "Elevación Artificial y Control de Arena",
-            description: "Soluciones integrales para la elevación artificial y control de arena en pozos petroleros.",
+            title: "Levantamiento Artificial y Control de Arena",
+            description: "Soluciones integrales para el levantamiento artificial y control de arena en pozos petroleros.",
             icon: "wrench",
-            imageUrl: "/Home/Servicio_3.webp",
+            imageUrl: "/Home/Servicio_1.webp",
             url: "/services/3"
         }
     ],

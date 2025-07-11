@@ -5,7 +5,7 @@ export const EnterpriseInfo = {
         Monagas: " Manzana Nº 39, Calle 11- A, Parcela 2 y 3,Zona Industrial, Maturín 6201",
         Zulia: " Av Intercomunal, Sector Ezequiel Zamora Galpon 11, Municipio Simon Bolivar / Ciudad Ojeda 4019"
     },
-    phone: "+58 291 3175912",
+    phone: "+58 291 3175912 | +1 786 571 9496",
     email: "info@sysvencol.com / sysvencol@gmail.com",
     socialmedia: [
         {
@@ -65,21 +65,21 @@ export const ServicesInfo = {
             title: "Completación de Pozos",
             description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
             icon: "oil-well",
-            imageUrl: "/Home/Servicios_1.webp",
+            imageUrl: "/Home/Servicio_1.webp",
             url: "/services/1"
         },
         {
             title: "Intervención de Pozos",
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             icon: "screwdriver-wrench",
-            imageUrl: "/Home/Servicios_2.webp",
+            imageUrl: "/Home/Servicio_2.webp",
             url: "/services/2"
         },
         {
             title: "Elevación Artificial y Control de Arena",
             description: "Soluciones integrales para la elevación artificial y control de arena en pozos petroleros.",
             icon: "wrench",
-            imageUrl: "/Home/Servicios_3.webp",
+            imageUrl: "/Home/Servicio_3.webp",
             url: "/services/3"
         }
     ],

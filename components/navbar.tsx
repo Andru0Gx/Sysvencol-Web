@@ -31,7 +31,7 @@ export default function Navbar() {
                         </div>
                         <div className="flex items-center text-sm text-gray-600">
                             <Mail className="mr-2 h-4 w-4" />
-                            <span>info@sysvencol.com</span>
+                            <span>{EnterpriseInfo.email}</span>
                         </div>
                     </div>
                     {/* <div className="mt-2 flex items-center space-x-4 sm:mt-0">
@@ -219,13 +219,13 @@ export default function Navbar() {
                                     <div className="flex items-center">
                                         <Phone className="h-5 w-5 text-gray-600" />
                                         <span className="ml-3 text-gray-600">
-                                            +1 786 571 9496
+                                            {EnterpriseInfo.phone}
                                         </span>
                                     </div>
                                     <div className="flex items-center">
                                         <Mail className="h-5 w-5 text-gray-600" />
                                         <span className="ml-3 text-gray-600">
-                                            info@sysvencol.com
+                                            {EnterpriseInfo.email}
                                         </span>
                                     </div>
                                 </div>

@@ -55,9 +55,33 @@ export const EnterpriseInfo = {
 
 export const ServicesInfo = {
     principales: [
-        "Terminación de Pozos",
+        "Completación de Pozos",
         "Intervención de Pozos",
         "Elevación Artificial y Control de Arena"
+    ],
+
+    principalesInfo: [
+        {
+            title: "Completación de Pozos",
+            description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
+            icon: "oil-well",
+            imageUrl: "/Home/Servicios_1.webp",
+            url: "/services/1"
+        },
+        {
+            title: "Intervención de Pozos",
+            description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
+            icon: "screwdriver-wrench",
+            imageUrl: "/Home/Servicios_2.webp",
+            url: "/services/2"
+        },
+        {
+            title: "Elevación Artificial y Control de Arena",
+            description: "Soluciones integrales para la elevación artificial y control de arena en pozos petroleros.",
+            icon: "wrench",
+            imageUrl: "/Home/Servicios_3.webp",
+            url: "/services/3"
+        }
     ],
 
     secundarios: [
@@ -68,9 +92,9 @@ export const ServicesInfo = {
     ],
 
     todos: {
-        "Terminación de Pozos": [
-            "Packer de Terminación Permanente HPHT",
-            "Packer de Terminación Recuperable HPHT",
+        "Completación de Pozos": [
+            "Packer de Completación Permanente HPHT",
+            "Packer de Completación Recuperable HPHT",
             "Colgadores de Liner",
             "Válvula de Seguridad Subsuperficial (TRSV)",
             "Equipos de Inyección de Vapor",

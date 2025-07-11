@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import ServiceCard from "@/components/service-card";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { ServicesInfo } from "@/lib/types";
 
 export default function ServicesSection() {
     return (
@@ -18,7 +19,18 @@ export default function ServicesSection() {
                 </div>
 
                 <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                    <ServiceCard
+                    {ServicesInfo.principalesInfo.map((service) => (
+                        <ServiceCard
+                            key={service.title}
+                            title={service.title}
+                            description={service.description}
+                            icon={service.icon}
+                            imageUrl={service.imageUrl}
+                            url={service.url}
+                        />
+                    ))}
+
+                    {/* <ServiceCard
                         title="Mantenimiento de Equipos"
                         description="Servicio especializado de mantenimiento preventivo y correctivo para equipos industriales."
                         icon="wrench"
@@ -38,7 +50,7 @@ export default function ServicesSection() {
                         icon="tool"
                         imageUrl="/placeholder.svg?height=600&width=800"
                         url="/services#tools"
-                    />
+                    /> */}
                 </div>
 
                 <div className="mt-12 text-center">

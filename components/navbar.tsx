@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Menu, ChevronDown, Globe, Phone, Mail } from "lucide-react";
 import LogoSysvencol from "@/components/icons/Logo";
+import { EnterpriseInfo } from "@/lib/types";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,7 +27,7 @@ export default function Navbar() {
                     <div className="flex items-center space-x-4">
                         <div className="flex items-center text-sm text-gray-600">
                             <Phone className="mr-2 h-4 w-4" />
-                            <span>+1 786 571 9496 / +58 251 8175112</span>
+                            <span> {EnterpriseInfo.phone} </span>
                         </div>
                         <div className="flex items-center text-sm text-gray-600">
                             <Mail className="mr-2 h-4 w-4" />

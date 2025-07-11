@@ -26,7 +26,7 @@ const slides = [
     },
     {
         id: 2,
-        image: "/Home/Workshop4.webp",
+        image: "/Home/Equipo.webp",
         alt: "Completación de pozos",
         title: "Completación de pozos",
         description:
@@ -47,15 +47,22 @@ const slides = [
         title: "Servicios industriales",
         description:
             "Especialistas en servicios para la industria petrolera y petroquímica, con equipos de última generación.",
-        buttons: [],
+        buttons: [
+            {
+                label: "Ver Servicios",
+                href: "/services/1",
+                icon: <ChevronRight className="ml-2 h-4 w-4" />,
+                target: "",
+            },
+        ],
     },
     {
         id: 4,
-        image: "/Home/Workshop2.webp",
-        alt: "Equipos especializados",
-        title: "Equipos especializados",
+        image: "/Home/herramientas.webp",
+        alt: "Herramientas y equipos especializados",
+        title: "Herramientas y equipos especializados",
         description:
-            "Contamos con equipos especializados para cada necesidad industrial, garantizando eficiencia y calidad.",
+            "Contamos con herramientas y equipos especializados para cada necesidad industrial, garantizando eficiencia y calidad.",
         buttons: [
             {
                 label: "Solicitar Información",
@@ -112,7 +119,7 @@ export default function HeroCarousel() {
                     }`}
                 >
                     {index === currentSlide && (
-                        <div className="absolute inset-0 flex items-center bg-black/40 z-20">
+                        <div className="absolute inset-0 flex items-center bg-black/60 z-20">
                             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                                 <div className="max-w-2xl">
                                     <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
@@ -130,7 +137,7 @@ export default function HeroCarousel() {
                                             >
                                                 <Button
                                                     size="lg"
-                                                    className="bg-[#243f60] hover:bg-[#1a2e48]"
+                                                    className="text-[#243f60] bg-white hover:bg-[#1a2e48] hover:text-white"
                                                 >
                                                     {btn.label} {btn.icon}
                                                 </Button>

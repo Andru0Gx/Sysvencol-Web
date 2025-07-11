@@ -20,7 +20,11 @@ export default function RootLayout({
     return (
         <html lang="es" className="scroll-smooth">
             <head>
-                <link rel="icon" href="/Logo.svg" />
+                <script
+                    src="https://kit.fontawesome.com/1e900e1766.js"
+                    crossOrigin="anonymous"
+                ></script>
+                <link rel="icon" href="/favicon.ico" />
             </head>
             <body className={inter.className}>
                 {children}

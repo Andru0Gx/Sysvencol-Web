@@ -42,7 +42,7 @@ const slides = [
     },
     {
         id: 3,
-        image: "/Home/Servicios_3.webp",
+        image: "/Home/Carrillo.webp",
         alt: "Servicios industriales",
         title: "Servicios industriales",
         description:

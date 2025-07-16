@@ -29,28 +29,6 @@ export default function ServicesSection() {
                             url={service.url}
                         />
                     ))}
-
-                    {/* <ServiceCard
-                        title="Mantenimiento de Equipos"
-                        description="Servicio especializado de mantenimiento preventivo y correctivo para equipos industriales."
-                        icon="wrench"
-                        imageUrl="/placeholder.svg?height=600&width=800"
-                        url="/services#maintenance"
-                    />
-                    <ServiceCard
-                        title="Transporte Especializado"
-                        description="Transporte seguro y eficiente de equipos y materiales para la industria petrolera."
-                        icon="truck"
-                        imageUrl="/placeholder.svg?height=600&width=800"
-                        url="/services#transport"
-                    />
-                    <ServiceCard
-                        title="Herramientas Especializadas"
-                        description="Suministro de herramientas de alta calidad diseñadas para trabajos específicos."
-                        icon="tool"
-                        imageUrl="/placeholder.svg?height=600&width=800"
-                        url="/services#tools"
-                    /> */}
                 </div>
 
                 <div className="mt-12 text-center">

@@ -7,7 +7,7 @@ import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 
 import MisionVision from "@/components/about/mision&vision";
-import History from "@/components/about/History";
+import History from "@/components/about/history";
 import Valores from "@/components/about/valores";
 
 export default function AboutPage() {

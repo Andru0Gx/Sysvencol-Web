@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu, ChevronDown, Globe, Phone, Mail } from "lucide-react";
@@ -18,6 +19,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const pathname = usePathname();
 
     return (
         <header className="w-full">
@@ -67,37 +69,61 @@ export default function Navbar() {
                     <nav className="hidden md:flex md:items-center md:space-x-8">
                         <Link
                             href="/"
-                            className="text-[#243f60] font-medium hover:text-[#243f60]/80"
+                            className={
+                                `text-[#243f60] hover:text-[#243f60]/80 ` +
+                                (pathname === "/"
+                                    ? "font-bold underline underline-offset-4 text-[#243f60]"
+                                    : "")
+                            }
                         >
                             Inicio
                         </Link>
                         <Link
                             href="/about"
-                            className="text-gray-600 hover:text-[#243f60]"
+                            className={
+                                `text-gray-600 hover:text-[#243f60] ` +
+                                (pathname === "/about"
+                                    ? "font-bold underline underline-offset-4 text-[#243f60]"
+                                    : "")
+                            }
                         >
                             Nosotros
                         </Link>
                         <Link
                             href="/services"
-                            className="text-gray-600 hover:text-[#243f60]"
+                            className={
+                                `text-gray-600 hover:text-[#243f60] ` +
+                                (pathname === "/services"
+                                    ? "font-bold underline underline-offset-4 text-[#243f60]"
+                                    : "")
+                            }
                         >
                             Servicios
                         </Link>
                         {/* <Link
                             href="/gallery"
-                            className="text-gray-600 hover:text-[#243f60]"
+                            className={
+                                `text-gray-600 hover:text-[#243f60] ` +
+                                (pathname === "/gallery" ? "font-bold underline underline-offset-4 text-[#243f60]" : "")
+                            }
                         >
                             Galería
                         </Link>
                         <Link
                             href="/contact"
-                            className="text-gray-600 hover:text-[#243f60]"
+                            className={
+                                `text-gray-600 hover:text-[#243f60] ` +
+                                (pathname === "/contact" ? "font-bold underline underline-offset-4 text-[#243f60]" : "")
+                            }
                         >
                             Contacto
                         </Link>
                         <Link
                             href="/blog"
-                            className="text-gray-600 hover:text-[#243f60]"
+                            className={
+                                `text-gray-600 hover:text-[#243f60] ` +
+                                (pathname === "/blog" ? "font-bold underline underline-offset-4 text-[#243f60]" : "")
+                            }
                         >
                             Blog
                         </Link> */}

@@ -36,6 +36,7 @@ export default function Footer() {
                                 >
                                     <i
                                         className={`fa-${social.type} fa-${social.icon} h-5 w-5`}
+                                        aria-hidden="true"
                                     ></i>
                                     <span className="sr-only">
                                         {social.name}

@@ -142,3 +142,38 @@ export const ServicesInfo = {
         ]
     }
 };
+
+
+
+export const ValoresList = [
+    {
+        tittle: "Responsabilidad y Compromiso",
+        description: "Nos comprometemos a cumplir con nuestros compromisos y a entregar resultados de alta calidad en cada proyecto.",
+        icon: "CheckCircle2"
+    },
+    {
+        tittle: "Honestidad y Transparencia",
+        description: "Actuamos con honestidad, transparencia y ética en todas nuestras relaciones comerciales y profesionales.",
+        icon: "CheckCircle2"
+    },
+    {
+        tittle: "Respeto y Lealtad",
+        description: "Fomentamos un ambiente colaborativo donde cada miembro del equipo aporta su experiencia para lograr los objetivos comunes.",
+        icon: "CheckCircle2"
+    },
+    {
+        tittle: "Justicia y Equidad",
+        description: "Promovemos un ambiente de trabajo justo y equitativo, donde todos los empleados son valorados y respetados.",
+        icon: "CheckCircle2"
+    },
+    {
+        tittle: "Excelencia e Innovación",
+        description: "Fomentamos un ambiente de trabajo donde se valora la creatividad y la búsqueda de soluciones innovadoras.",
+        icon: "CheckCircle2"
+    },
+    {
+        tittle: "Calidad",
+        description: "Nos comprometemos a cumplir con nuestros compromisos y a entregar resultados de alta calidad en cada proyecto.",
+        icon: "CheckCircle2"
+    },
+]

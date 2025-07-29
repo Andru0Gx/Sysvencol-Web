@@ -32,10 +32,13 @@ export default function ServiceCard({
             </div>
             <CardContent className="p-6">
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#243f60]/10 text-[#243f60]">
-                    <i
-                        className={`fa-solid fa-${icon} h-5 w-5 text-center text-[#243f60]`}
-                        aria-hidden="true"
-                    ></i>
+                    <Image
+                        className="h-24 w-24"
+                        src={icon}
+                        alt={title}
+                        width={20}
+                        height={20}
+                    ></Image>
                 </div>
                 <h3 className="mb-2 text-xl font-bold text-[#243f60]">
                     {title}

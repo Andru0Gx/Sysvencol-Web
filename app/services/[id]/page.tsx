@@ -140,9 +140,9 @@ export default function ServiceDetailPage({
                     </div>
                     {/* Detalles del Servicio (PostContent) */}
                     {service.CompleteDescription && (
-                        <section className="mt-16 w-full">
+                        <section className="mt-16 w-full border-t-2 pt-8">
                             <h2 className="text-2xl font-bold text-[#243f60] mb-8 text-center">
-                                Sobre este servicio
+                                Descripción del Servicio
                             </h2>
                             <div className="prose prose-lg w-full max-w-none mb-10 text-justify">
                                 {service.CompleteDescription}
@@ -150,9 +150,6 @@ export default function ServiceDetailPage({
                             {service.PostContent &&
                                 service.PostContent.length > 0 && (
                                     <div className="mt-12 w-full">
-                                        <h3 className="text-xl font-bold text-[#243f60] mb-6 text-center">
-                                            Detalles y Artículos del Servicio
-                                        </h3>
                                         <Accordion
                                             type="multiple"
                                             className="w-full"
@@ -189,24 +186,6 @@ export default function ServiceDetailPage({
                     )}
                 </div>
 
-                {/* Service Details */}
-
-                {/* Service Details Tabs (dummy, as example) */}
-                {/*
-        <div className="mt-16">
-          <Tabs defaultValue="process" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 lg:w-[400px]">
-              <TabsTrigger value="process">Proceso</TabsTrigger>
-              <TabsTrigger value="faqs">Preguntas Frecuentes</TabsTrigger>
-              <TabsTrigger value="testimonials">Testimonios</TabsTrigger>
-            </TabsList>
-            <TabsContent value="process" className="mt-6">...</TabsContent>
-            <TabsContent value="faqs" className="mt-6">...</TabsContent>
-            <TabsContent value="testimonials" className="mt-6">...</TabsContent>
-          </Tabs>
-        </div>
-        */}
-
                 {/* CTA Section */}
                 <div className="mt-16 rounded-lg bg-[#243f60] p-8 text-white">
                     <div className="grid gap-8 md:grid-cols-2 md:items-center">
@@ -227,7 +206,7 @@ export default function ServiceDetailPage({
                                 <Button
                                     size="lg"
                                     variant="outline"
-                                    className="border-white text-white hover:bg-white hover:text-[#243f60]"
+                                    className="border-white hover:bg-[#efefef] text-[#243f60]"
                                 >
                                     Contactar Ahora
                                     <ArrowRight className="ml-2 h-5 w-5" />

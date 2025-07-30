@@ -66,10 +66,10 @@ export default async function ServiceDetailPage({
 
             <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
                 {/* Breadcrumbs */}
-                <div className="mb-8">
+                <div className="mb-8 hover:bg-gray-100 px-2 py-1 rounded-full w-fit">
                     <Link
                         href="/services"
-                        className="flex items-center text-[#243f60] hover:text-[#1a2e48]"
+                        className="flex items-center text-[#243f60] hover:text-[#1a2e48] "
                     >
                         <ArrowLeft className="mr-2 h-4 w-4" />
                         Volver a Servicios

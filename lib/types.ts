@@ -66,21 +66,21 @@ export const ServicesInfo = {
             description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
             icon: "/Icons/1.svg",
             imageUrl: "/Home/Servicio_2.webp",
-            url: "/services/1"
+            url: "/services/completacion-de-pozos"
         },
         {
             title: "Intervención de Pozos",
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             icon: "/Icons/2.svg",
             imageUrl: "/Home/Servicio_3.webp",
-            url: "/services/2"
+            url: "/services/intervencion-de-pozos"
         },
         {
             title: "Levantamiento Artificial y Control de Arena",
             description: "Soluciones integrales para el levantamiento artificial y control de arena en pozos petroleros.",
             icon: "/Icons/3.svg",
             imageUrl: "/Home/Servicio_1.webp",
-            url: "/services/3"
+            url: "/services/elevacion-artificial-y-control-de-arena"
         }
     ],
 
@@ -195,19 +195,23 @@ export const ServicesInfo = {
                 }
             ]
         },
-        "Elevación Artificial": {
-            title: "Elevación Artificial",
-            description: "Soluciones para el levantamiento artificial en pozos petroleros.",
-            CompleteDescription: "La Elevación Artificial es una técnica clave para mantener la producción en pozos donde la presión natural del yacimiento no es suficiente para llevar los hidrocarburos a la superficie. En Sysvencol, implementamos sistemas de levantamiento artificial como bombas de cavidad progresiva (PCP), gas lift y otros métodos adaptados a las características de cada pozo. Nuestro enfoque se basa en la selección óptima de equipos y la integración de tecnologías que permiten aumentar la eficiencia, reducir costos operativos y minimizar el desgaste de los componentes. Acompañamos a nuestros clientes en todo el proceso, desde el análisis técnico hasta la puesta en marcha y el mantenimiento, asegurando una operación continua y confiable.",
+        "Elevación Artificial y Control de Arena": {
+            title: "Elevación Artificial y Control de Arena",
+            description: "Soluciones integrales para el levantamiento artificial y control de arena en pozos petroleros.",
+            CompleteDescription: "La Elevación Artificial y el Control de Arena son técnicas clave para mantener y optimizar la producción en pozos donde la presión natural del yacimiento no es suficiente o existen riesgos de migración de partículas sólidas. En Sysvencol, implementamos sistemas de levantamiento artificial como bombas de cavidad progresiva (PCP), gas lift y otros métodos, junto con soluciones avanzadas de control de arena como mallas premium, revestimientos ranurados y empacadores. Nuestro enfoque se basa en la selección óptima de equipos y la integración de tecnologías que permiten aumentar la eficiencia, reducir costos operativos, minimizar el desgaste de los componentes y proteger los equipos. Acompañamos a nuestros clientes en todo el proceso, desde el análisis técnico hasta la puesta en marcha y el mantenimiento, asegurando una operación continua, confiable y segura, minimizando riesgos y prolongando la vida útil de sus activos.",
             icon: "/Icons/3.svg",
             imageUrl: "/Home/Servicio_1.webp",
-            url: "/services/elevacion-artificial",
+            url: "/services/elevacion-artificial-y-control-de-arena",
             category: "Producción",
             content: [
                 "Mandril de Levantamiento por Gas",
                 "Bombas PCP",
                 "Varillas",
-                "Unidades de Cabezal de Pozo"
+                "Unidades de Cabezal de Pozo",
+                "Malla Premium",
+                "Malla de Alambre Enrollado",
+                "Liner Ranurado",
+                "Packer de Control de Arena"
             ],
             PostContent: [
                 {
@@ -225,24 +229,7 @@ export const ServicesInfo = {
                 {
                     title: "Cabezales de Accionamiento de Pozo (Wellhead Drives)",
                     paragraph: "Los Cabezales de Accionamiento de Pozo son los equipos que Sysvencol instala en la superficie del pozo, específicamente para operar las bombas de cavidad progresiva (PCP). Estos dispositivos proporcionan la potencia y el control rotacional necesarios para que la bomba de fondo funcione, impulsando el crudo hacia la superficie."
-                }
-            ]
-        },
-        "Control de Arena": {
-            title: "Control de Arena",
-            description: "Soluciones para el control de arena en pozos petroleros.",
-            CompleteDescription: "El Control de Arena es fundamental para evitar la migración de partículas sólidas desde la formación hacia el pozo, lo que puede causar daños a los equipos, reducir la eficiencia de producción y aumentar los costos de mantenimiento. En Sysvencol, ofrecemos soluciones avanzadas como mallas premium, revestimientos ranurados y empacadores de control de arena, diseñados para adaptarse a diferentes condiciones de yacimiento. Nuestro equipo técnico evalúa cada caso para seleccionar la mejor estrategia, garantizando la protección del pozo y la continuidad operativa. Con nuestras tecnologías y experiencia, ayudamos a nuestros clientes a mantener una producción estable y segura, minimizando riesgos y prolongando la vida útil de sus activos.",
-            icon: "",
-            imageUrl: "",
-            url: "/services/control-de-arena",
-            category: "Producción",
-            content: [
-                "Malla Premium",
-                "Malla de Alambre Enrollado",
-                "Liner Ranurado",
-                "Packer de Control de Arena"
-            ],
-            PostContent: [
+                },
                 {
                     title: "Mallas Premium (Premium Screen)",
                     paragraph: "Las Mallas Premium son sistemas avanzados de control de arena que Sysvencol emplea para prevenir la migración de partículas de formación hacia el pozo. Están diseñadas con una alta precisión y resistencia, ofreciendo una filtración superior y una mayor durabilidad en comparación con las mallas convencionales, asegurando un flujo de producción limpio y constante."

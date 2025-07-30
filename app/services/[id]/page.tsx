@@ -22,12 +22,13 @@ function slugify(str: string) {
         .replace(/(^-|-$)+/g, "");
 }
 
-export default function ServiceDetailPage({
+export default async function ServiceDetailPage({
     params,
 }: {
     params: { id: string };
 }) {
-    const { id } = params;
+    const awaitedParams = await params;
+    const { id } = awaitedParams;
     // Buscar el servicio por slug
     const serviceEntry = Object.entries(ServicesInfo.todos).find(
         ([key, value]) => slugify(key) === id

@@ -6,7 +6,11 @@ export const EnterpriseInfo = {
         Zulia: " Av Intercomunal, Sector Ezequiel Zamora Galpon 11, Municipio Simon Bolivar / Ciudad Ojeda 4019"
     },
     phone: "+58 291 3175912 | +1 786 571 9496",
-    email: "info@sysvencol.com / sysvencol@gmail.com",
+    email: "info@sysvencol.com | sysvencol@gmail.com",
+    horario: {
+        morning: "Lunes a Viernes: 7:00 AM - 12:00 PM",
+        afternoon: "Lunes a Viernes: 1:00 PM - 5:00 PM",
+    },
     socialmedia: [
         {
             url: "https://www.linkedin.com/company/sysvencol-c-a",
@@ -84,7 +88,7 @@ export const ServicesInfo = {
         }
     ],
 
-    "todos": {
+    todos: {
         "Completación de Pozos": {
             title: "Completación de Pozos",
             description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
@@ -257,7 +261,7 @@ export const ServicesInfo = {
             description: "Soluciones de digitalización y automatización industrial.",
             CompleteDescription: "La Infraestructura Digital es el pilar de la transformación industrial moderna. En Sysvencol, desarrollamos e implementamos soluciones de digitalización y automatización que permiten a las empresas optimizar sus procesos, mejorar la toma de decisiones y aumentar la eficiencia operativa. Desde la instrumentación inteligente hasta la operación en tiempo real y la integración de sistemas, nuestro enfoque está orientado a brindar visibilidad, control y seguridad en todas las etapas del proceso industrial. Acompañamos a nuestros clientes en su camino hacia la industria 4.0, asegurando una transición efectiva y sostenible.",
             icon: "",
-            imageUrl: "",
+            imageUrl: "/Services/InfraestructuraDigital.webp",
             url: "/services/infraestructura-digital",
             category: "Digitalización",
             content: [
@@ -265,14 +269,27 @@ export const ServicesInfo = {
                 "Proyectos de Ingeniería",
                 "Instrumentación/Automatización"
             ],
-            PostContent: []
+            PostContent: [
+                {
+                    title: "Operación en Tiempo Real (RTO)",
+                    paragraph: "La Operación en Tiempo Real (RTO) permite a las empresas monitorear, analizar y controlar sus procesos industriales de manera inmediata y remota. Sysvencol implementa sistemas avanzados que recopilan datos en tiempo real desde sensores e instrumentos distribuidos en campo, facilitando la toma de decisiones informadas, la detección temprana de anomalías y la optimización continua de la producción. Esta capacidad es fundamental para lograr eficiencia, seguridad y competitividad en la industria moderna."
+                },
+                {
+                    title: "Proyectos de Ingeniería",
+                    paragraph: "Los Proyectos de Ingeniería en Infraestructura Digital abarcan el diseño, integración y puesta en marcha de soluciones tecnológicas adaptadas a las necesidades de cada cliente. Sysvencol desarrolla proyectos que incluyen la automatización de procesos, la digitalización de operaciones y la integración de sistemas de control, asegurando la interoperabilidad y el cumplimiento de los más altos estándares de calidad y seguridad."
+                },
+                {
+                    title: "Instrumentación/Automatización",
+                    paragraph: "La Instrumentación y Automatización son pilares de la Infraestructura Digital. Sysvencol selecciona, instala y calibra instrumentos inteligentes que permiten medir y controlar variables críticas del proceso industrial, como presión, temperatura, caudal y nivel. Además, implementa sistemas de automatización que optimizan la operación, reducen errores humanos y mejoran la trazabilidad, contribuyendo a una gestión eficiente y segura de las instalaciones."
+                }
+            ]
         },
         "Pruebas No Destructivas": {
             title: "Pruebas No Destructivas",
             description: "Servicios de pruebas no destructivas para equipos industriales.",
             CompleteDescription: "Las Pruebas No Destructivas (PND) son esenciales para garantizar la integridad y confiabilidad de los equipos industriales sin afectar su funcionamiento. En Sysvencol, ofrecemos una gama completa de servicios de inspección, incluyendo partículas magnéticas, ultrasonido e inspección visual, que permiten detectar defectos, desgastes o anomalías en materiales y componentes. Nuestro personal calificado utiliza equipos de última tecnología para asegurar resultados precisos y confiables, contribuyendo a la seguridad operativa y a la reducción de riesgos en las instalaciones de nuestros clientes.",
             icon: "",
-            imageUrl: "",
+            imageUrl: "/Services/Pruebas.webp",
             url: "/services/pruebas-no-destructivas",
             category: "Inspección",
             content: [
@@ -280,14 +297,27 @@ export const ServicesInfo = {
                 "Pruebas Ultrasónicas",
                 "Inspección Visual"
             ],
-            PostContent: []
+            PostContent: [
+                {
+                    title: "Partículas Magnéticas",
+                    paragraph: "Esta técnica es altamente efectiva para detectar discontinuidades superficiales y subsuperficiales en materiales ferromagnéticos (como el acero). En Sysvencol, aplicamos un campo magnético y partículas finas (secas o húmedas) que se agrupan en las áreas donde existe una fuga de flujo magnético causada por un defecto, haciendo visible lo que a simple vista no se puede apreciar. Es ideal para inspeccionar soldaduras, piezas forjadas y fundiciones."
+                },
+                {
+                    title: "Pruebas Ultrasónicas",
+                    paragraph: "Las pruebas ultrasónicas emplean ondas sonoras de alta frecuencia para penetrar en los materiales y detectar defectos internos, medir espesores y evaluar la corrosión. Un transductor emite ondas que viajan a través del material y se reflejan en las discontinuidades. La interpretación de estos ecos permite a nuestros técnicos de Sysvencol identificar la ubicación, tamaño y naturaleza de los defectos, ofreciendo una visión interna detallada de la integridad del componente."
+                },
+                {
+                    title: "Inspección Visual",
+                    paragraph: "Aunque parece básica, la inspección visual es la técnica de PND más fundamental y a menudo la primera línea de defensa. Nuestros inspectores certificados en Sysvencol utilizan lupas, boroscopios y otros equipos especializados para examinar minuciosamente las superficies de los componentes. Esta técnica permite identificar corrosión, grietas, deformaciones, daños por impacto y otros defectos superficiales que podrían ser indicativos de problemas más profundos o de la necesidad de otras pruebas."
+                }
+            ]
         },
         "Soporte Logístico": {
             title: "Soporte Logístico",
             description: "Servicios de soporte logístico para la industria.",
             CompleteDescription: "El Soporte Logístico es un componente clave para el éxito de cualquier operación industrial. En Sysvencol, proporcionamos servicios logísticos integrales que incluyen el suministro de unidades de vacío, generadores diésel y plantas de tratamiento, entre otros. Nuestra misión es asegurar que nuestros clientes cuenten con los recursos y el respaldo necesarios para mantener la continuidad de sus operaciones, optimizando tiempos y costos. Nos enfocamos en la eficiencia, la puntualidad y la adaptabilidad, ofreciendo soluciones a medida para cada proyecto y sector industrial.",
             icon: "",
-            imageUrl: "",
+            imageUrl: "/Services/Logistica.webp",
             url: "/services/soporte-logistico",
             category: "Logística",
             content: [
@@ -295,14 +325,27 @@ export const ServicesInfo = {
                 "Generadores Diésel",
                 "Plantas de Tratamiento"
             ],
-            PostContent: []
+            PostContent: [
+                {
+                    title: "Unidades de Vacío",
+                    paragraph: "Contamos con una flota de unidades de vacío de alta capacidad, esenciales para la gestión eficiente de fluidos, lodos y residuos en entornos industriales. Son fundamentales en operaciones de limpieza de tanques, pozos o derrames, permitiendo una rápida y segura recolección y transporte de materiales, lo que contribuye a la seguridad operativa y el cumplimiento ambiental, todo ello provisto por Sysvencol."
+                },
+                {
+                    title: "Generadores Diésel",
+                    paragraph: "La energía es el corazón de cualquier operación. Nuestros generadores diésel son equipos robustos y fiables que garantizan un suministro de energía ininterrumpido en tus instalaciones, incluso en las ubicaciones más remotas o en situaciones de emergencia. En Sysvencol, ofrecemos soluciones de alquiler y servicio técnico para asegurar que tus proyectos nunca se vean afectados por cortes de energía, manteniendo la productividad al máximo."
+                },
+                {
+                    title: "Plantas de Tratamiento",
+                    paragraph: "La gestión responsable de los efluentes es un imperativo. En Sysvencol, proporcionamos plantas de tratamiento móviles y fijas para aguas residuales, lodos y otros efluentes industriales. Estas soluciones cumplen con las normativas ambientales más estrictas, transformando los residuos en recursos o en efluentes seguros para su disposición, lo que no solo protege el medio ambiente sino que también optimiza tus operaciones."
+                }
+            ]
         },
         "Monitoreo de Yacimientos": {
             title: "Monitoreo de Yacimientos",
             description: "Soluciones para el monitoreo de yacimientos petroleros.",
             CompleteDescription: "El Monitoreo de Yacimientos es vital para la gestión eficiente y sostenible de los recursos petroleros. En Sysvencol, implementamos sistemas avanzados de monitoreo que permiten obtener datos en tiempo real sobre las condiciones del yacimiento, como presión, temperatura y composición de fluidos. Esta información es fundamental para la toma de decisiones informadas, la optimización de la producción y la prevención de problemas operativos. Nuestro compromiso es brindar a nuestros clientes herramientas tecnológicas y soporte técnico que les permitan maximizar el valor de sus activos y garantizar la seguridad y el rendimiento de sus operaciones.",
             icon: "",
-            imageUrl: "",
+            imageUrl: "/Services/Monitoreo.webp",
             url: "/services/monitoreo-de-yacimientos",
             category: "Producción",
             content: [
@@ -310,10 +353,23 @@ export const ServicesInfo = {
                 "Monitoreo de Temperatura",
                 "Fibra Óptica"
             ],
-            PostContent: []
+            PostContent: [
+                {
+                    title: "Sensores de Fondo",
+                    paragraph: "Desplegamos sensores de fondo de pozo de última generación que miden continuamente parámetros críticos como presión, temperatura y tasa de flujo directamente en la zona productora. Estos sensores, instalados por Sysvencol, proporcionan datos en tiempo real que son esenciales para optimizar la producción, identificar problemas como la declinación de la presión o la irrupción de agua, y tomar decisiones sobre intervenciones en el pozo."
+                },
+                {
+                    title: "Monitoreo de Temperatura",
+                    paragraph: "La temperatura es un indicador clave en muchos procesos de yacimientos, desde la estimulación térmica hasta la detección de flujos anómalos. En Sysvencol, implementamos sistemas de monitoreo de temperatura distribuidos o puntuales que permiten vigilar las variaciones térmicas a lo largo del pozo o en el yacimiento. Esto ayuda a comprender la distribución de fluidos, la eficiencia de los procesos de inyección y la integridad del pozo."
+                },
+                {
+                    title: "Fibra Óptica",
+                    paragraph: "La tecnología de fibra óptica ha revolucionado el monitoreo de yacimientos al permitir la adquisición de datos de alta resolución a lo largo de grandes distancias. Utilizando la dispersión de la luz, nuestros sistemas de fibra óptica de Sysvencol pueden detectar cambios mínimos de temperatura y tensión a lo largo de todo el cable. Esto proporciona un perfil continuo y en tiempo real de la actividad del pozo, permitiendo la detección de cross-flow, flujos de gas, fugas y otros eventos críticos que afectan el rendimiento del yacimiento."
+                }
+            ]
         }
     }
-};
+}
 
 
 

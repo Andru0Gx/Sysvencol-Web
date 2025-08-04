@@ -74,14 +74,14 @@ export default function Footer() {
                                     Servicios
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link
                                     href="/gallery"
                                     className="text-white/80 hover:text-white"
                                 >
                                     Galería
                                 </Link>
-                            </li>
+                            </li> */}
                             <li>
                                 <Link
                                     href="/contact"
@@ -90,14 +90,14 @@ export default function Footer() {
                                     Contacto
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link
                                     href="/blog"
                                     className="text-white/80 hover:text-white"
                                 >
                                     Blog
                                 </Link>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                     <div>

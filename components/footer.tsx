@@ -103,16 +103,17 @@ export default function Footer() {
                     <div>
                         <h3 className="mb-4 text-lg font-bold">Servicios</h3>
                         <ul className="space-y-2">
-                            {Object.keys(ServicesInfo.todos).map(
-                                (service: string, index: number) => (
+                            {Object.entries(ServicesInfo.todos).map(
+                                (
+                                    [serviceName, serviceObj]: [string, any],
+                                    index: number
+                                ) => (
                                     <li key={index}>
                                         <Link
-                                            href={`/services/${service
-                                                .toLowerCase()
-                                                .replace(/\s+/g, "-")}`}
+                                            href={serviceObj.url}
                                             className="text-white/80 hover:text-white"
                                         >
-                                            {service}
+                                            {serviceObj.title}
                                         </Link>
                                     </li>
                                 )

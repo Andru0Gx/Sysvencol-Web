@@ -114,8 +114,13 @@ export default function ContactPage() {
                                         </h3>
                                         <div className="space-y-2">
                                             <div className="flex items-center">
-                                                <Circle className="mr-3 h-3 w-3 flex-shrink-0 fill-accenttext-primary" />
+                                                {/* <Circle className="mr-3 h-3 w-3 flex-shrink-0 fill-accenttext-primary" /> */}
+
                                                 <p className="text-gray-600">
+                                                    <span className="font-semibold">
+                                                        Monagas
+                                                    </span>
+                                                    {" - "}
                                                     {
                                                         EnterpriseInfo.address
                                                             .Monagas
@@ -123,8 +128,12 @@ export default function ContactPage() {
                                                 </p>
                                             </div>
                                             <div className="flex items-center mt-2">
-                                                <Circle className="mr-3 h-3 w-3 flex-shrink-0 fill-accent text-primary" />
+                                                {/* <Circle className="mr-3 h-3 w-3 flex-shrink-0 fill-accent text-primary" /> */}
                                                 <p className="text-gray-600">
+                                                    <span className="font-semibold">
+                                                        Zulia
+                                                    </span>
+                                                    {" - "}
                                                     {
                                                         EnterpriseInfo.address
                                                             .Zulia

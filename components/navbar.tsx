@@ -22,7 +22,7 @@ export default function Navbar() {
     const pathname = usePathname();
 
     return (
-        <header className="w-full">
+        <header className="w-full ">
             {/* Top Bar */}
             <div className="bg-gray-100 py-2">
                 <div className="container mx-auto flex flex-col justify-between px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
@@ -108,17 +108,19 @@ export default function Navbar() {
                             }
                         >
                             Galería
-                        </Link>
+                        </Link> */}
                         <Link
                             href="/contact"
                             className={
                                 `text-gray-600 hover:text-[#243f60] ` +
-                                (pathname === "/contact" ? "font-bold underline underline-offset-4 text-[#243f60]" : "")
+                                (pathname === "/contact"
+                                    ? "font-bold underline underline-offset-4 text-[#243f60]"
+                                    : "")
                             }
                         >
                             Contacto
                         </Link>
-                        <Link
+                        {/* <Link
                             href="/blog"
                             className={
                                 `text-gray-600 hover:text-[#243f60] ` +
@@ -215,7 +217,7 @@ export default function Navbar() {
                                         onClick={() => setIsOpen(false)}
                                     >
                                         Galería
-                                    </Link>
+                                    </Link> */}
                                     <Link
                                         href="/contact"
                                         className="text-lg text-gray-600 hover:text-[#243f60]"
@@ -223,7 +225,7 @@ export default function Navbar() {
                                     >
                                         Contacto
                                     </Link>
-                                    <Link
+                                    {/* <Link
                                         href="/blog"
                                         className="text-lg text-gray-600 hover:text-[#243f60]"
                                         onClick={() => setIsOpen(false)}

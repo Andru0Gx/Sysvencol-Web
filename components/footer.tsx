@@ -13,7 +13,7 @@ import { EnterpriseInfo, ServicesInfo } from "@/lib/types";
 export default function Footer() {
     return (
         <footer className="bg-[#243f60] text-white">
-            <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto px-4 py-12 sm:px-6 lg:px-8">
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                     <div>
                         <h3 className="mb-4 text-lg font-bold">
@@ -25,6 +25,7 @@ export default function Footer() {
                             comprometida con la calidad y la excelencia en cada
                             proyecto.
                         </p>
+                        <span className="sr-only">Redes Sociales</span>
                         <div className="flex space-x-4">
                             {EnterpriseInfo.socialmedia.map((social) => (
                                 <Link
@@ -38,9 +39,7 @@ export default function Footer() {
                                         className={`fa-${social.type} fa-${social.icon} h-5 w-5`}
                                         aria-hidden="true"
                                     ></i>
-                                    <span className="sr-only">
-                                        {social.name}
-                                    </span>
+                                    {/* <span>{social.name}</span> */}
                                 </Link>
                             ))}
                         </div>

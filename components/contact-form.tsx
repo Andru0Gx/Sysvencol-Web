@@ -1,102 +1,319 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
-export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  })
+export type ContactFormVariant = "default" | "card";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+interface ContactFormProps {
+    formData: {
+        name: string;
+        email: string;
+        phone: string;
+        subject: string;
+        message: string;
+    };
+    setFormData: React.Dispatch<
+        React.SetStateAction<{
+            name: string;
+            email: string;
+            phone: string;
+            subject: string;
+            message: string;
+        }>
+    >;
+    variant?: ContactFormVariant;
+}
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Aquí iría la lógica para enviar el formulario
-    console.log("Form submitted:", formData)
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    })
-    alert("¡Gracias por contactarnos! Nos pondremos en contacto contigo pronto.")
-  }
+export function ContactForm({
+    formData,
+    setFormData,
+    variant = "default",
+}: ContactFormProps) {
+    const { toast } = useToast();
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
 
-  return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="space-y-2">
-        <Label htmlFor="name" className="text-white">
-          Nombre
-        </Label>
-        <Input
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-          placeholder="Tu nombre"
-        />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="email" className="text-white">
-          Correo electrónico
-        </Label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-          placeholder="tu@email.com"
-        />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="phone" className="text-white">
-          Teléfono
-        </Label>
-        <Input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
-          placeholder="+1 234 567 8900"
-        />
-      </div>
-      <div className="space-y-2">
-        <Label htmlFor="message" className="text-white">
-          Mensaje
-        </Label>
-        <Textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          required
-          className="min-h-[120px] bg-white/10 border-white/20 text-white placeholder:text-white/50"
-          placeholder="¿Cómo podemos ayudarte?"
-        />
-      </div>
-      <Button type="submit" className="w-full bg-white text-[#243f60] hover:bg-white/90">
-        Enviar mensaje
-      </Button>
-    </form>
-  )
+    const handleSelectChange = (value: string) => {
+        setFormData((prev) => ({ ...prev, subject: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    subject: "",
+                    message: "",
+                });
+                toast({
+                    title: "¡Mensaje enviado!",
+                    description:
+                        "Gracias por contactarnos. Nos pondremos en contacto contigo pronto.",
+                    duration: 4000,
+                    variant: "success",
+                });
+            } else {
+                toast({
+                    title: data.title || "Error al enviar",
+                    description:
+                        data.message ||
+                        "Hubo un error al enviar el mensaje. Intente nuevamente.",
+                    variant: "destructive",
+                    duration: 4000,
+                });
+            }
+        } catch (error) {
+            toast({
+                title: "Error de red",
+                description:
+                    "Hubo un error al enviar el mensaje. Intente nuevamente.",
+                variant: "destructive",
+                duration: 4000,
+            });
+        }
+    };
+
+    // Diseño tipo "card"
+    if (variant === "card") {
+        return (
+            <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                <div className="space-y-2">
+                    <Label htmlFor="name">Nombre Completo</Label>
+                    <Input
+                        id="name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Su nombre completo"
+                    />
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="space-y-2">
+                        <Label htmlFor="email">Correo Electrónico</Label>
+                        <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="su@email.com"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="phone">Teléfono</Label>
+                        <Input
+                            id="phone"
+                            name="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="+1 234 567 8900"
+                        />
+                    </div>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="subject">Asunto</Label>
+                    <select
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={(e) => handleSelectChange(e.target.value)}
+                        className={`w-full rounded-md border  px-3 py-2 h-[42px] focus:outline-none focus:ring-2 focus:ring-[#243f60] text-base font-normal leading-normal transition-colors duration-150 placeholder:text-[#243f60]/50 placeholder:text-base appearance-none ${
+                            formData.subject === ""
+                                ? "text-[#243f60]/50"
+                                : "text-[#243f60]"
+                        }`}
+                    >
+                        <option value="" className="text-[#243f60]/50">
+                            Seleccione un asunto
+                        </option>
+                        <option value="general" className="text-[#243f60]">
+                            Consulta General
+                        </option>
+                        <option value="quote" className="text-[#243f60]">
+                            Solicitud de Cotización
+                        </option>
+                        <option value="support" className="text-[#243f60]">
+                            Soporte Técnico
+                        </option>
+                        <option value="completacion" className="text-[#243f60]">
+                            Completación de Pozos
+                        </option>
+                        <option value="intervencion" className="text-[#243f60]">
+                            Intervención de Pozos
+                        </option>
+                        <option value="elevacion" className="text-[#243f60]">
+                            Elevación Artificial y Control de Arena
+                        </option>
+                        <option
+                            value="infraestructura"
+                            className="text-[#243f60]"
+                        >
+                            Infraestructura Digital
+                        </option>
+                        <option value="pnd" className="text-[#243f60]">
+                            Pruebas No Destructivas
+                        </option>
+                        <option value="other" className="text-[#243f60]">
+                            Otro
+                        </option>
+                    </select>
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="message">Mensaje</Label>
+                    <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="¿Cómo podemos ayudarle?"
+                        className="min-h-[120px]"
+                    />
+                </div>
+                <Button
+                    type="submit"
+                    className="w-full bg-[#243f60] text-white hover:bg-[#1a2e48]"
+                >
+                    Enviar Mensaje
+                </Button>
+            </form>
+        );
+    }
+
+    // Diseño "default"
+    return (
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+                <Label htmlFor="name" className="text-white text-base">
+                    Nombre Completo
+                </Label>
+                <Input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="bg-[#f8fafc] border-[#243f60] text-[#243f60] placeholder:text-[#243f60]/50 placeholder:text-base focus:ring-2 focus:ring-[#243f60] text-base"
+                    placeholder="Su nombre completo"
+                />
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                    <Label htmlFor="email" className="text-white text-base">
+                        Correo Electrónico
+                    </Label>
+                    <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        className="bg-[#f8fafc] border-[#243f60] text-[#243f60] placeholder:text-[#243f60]/50 placeholder:text-base focus:ring-2 focus:ring-[#243f60] text-base"
+                        placeholder="su@email.com"
+                    />
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="phone" className="text-white text-base">
+                        Teléfono
+                    </Label>
+                    <Input
+                        id="phone"
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className="bg-[#f8fafc] border-[#243f60] text-[#243f60] placeholder:text-[#243f60]/50 placeholder:text-base focus:ring-2 focus:ring-[#243f60] text-base"
+                        placeholder="+1 234 567 8900"
+                    />
+                </div>
+            </div>
+            <div className="space-y-2">
+                <Label htmlFor="subject" className="text-white text-base">
+                    Asunto
+                </Label>
+                <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={(e) => handleSelectChange(e.target.value)}
+                    className={`w-full rounded-md border bg-[#f8fafc] border-[#243f60] px-3 py-2 h-[42px] focus:outline-none focus:ring-2 focus:ring-[#243f60] text-base font-normal leading-normal transition-colors duration-150 placeholder:text-[#243f60]/50 placeholder:text-base appearance-none ${
+                        formData.subject === ""
+                            ? "text-[#243f60]/50"
+                            : "text-[#243f60]"
+                    }`}
+                >
+                    <option value="" className="text-[#243f60]/50">
+                        Seleccione un asunto
+                    </option>
+                    <option value="general" className="text-[#243f60]">
+                        Consulta General
+                    </option>
+                    <option value="quote" className="text-[#243f60]">
+                        Solicitud de Cotización
+                    </option>
+                    <option value="support" className="text-[#243f60]">
+                        Soporte Técnico
+                    </option>
+                    <option value="completacion" className="text-[#243f60]">
+                        Completación de Pozos
+                    </option>
+                    <option value="intervencion" className="text-[#243f60]">
+                        Intervención de Pozos
+                    </option>
+                    <option value="elevacion" className="text-[#243f60]">
+                        Elevación Artificial y Control de Arena
+                    </option>
+                    <option value="infraestructura" className="text-[#243f60]">
+                        Infraestructura Digital
+                    </option>
+                    <option value="pnd" className="text-[#243f60]">
+                        Pruebas No Destructivas
+                    </option>
+                    <option value="other" className="text-[#243f60]">
+                        Otro
+                    </option>
+                </select>
+            </div>
+            <div className="space-y-2">
+                <Label htmlFor="message" className="text-white text-base">
+                    Mensaje
+                </Label>
+                <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="min-h-[120px] bg-[#f8fafc] border-[#243f60] text-[#243f60] placeholder:text-[#243f60]/50 placeholder:text-base focus:ring-2 focus:ring-[#243f60] text-base"
+                    placeholder="¿Cómo podemos ayudarle?"
+                />
+            </div>
+            <Button
+                type="submit"
+                className="w-full bg-white text-[#243f60] hover:bg-white/90"
+            >
+                Enviar mensaje
+            </Button>
+        </form>
+    );
 }

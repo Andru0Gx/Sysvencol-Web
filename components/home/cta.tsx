@@ -2,10 +2,23 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Phone, Mail, MapPin } from "lucide-react";
-import ContactForm from "@/components/contact-form";
+import { ContactForm } from "@/components/contact-form";
 import { EnterpriseInfo } from "@/lib/types";
 
+import { useState } from "react";
+
 export default function CtaSection() {
+    // Define initial form data structure according to ContactFormProps
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+    });
+
+    // ...existing code...
+
     return (
         <section id="contact" className="bg-gray-50 py-16">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +75,10 @@ export default function CtaSection() {
                             </div>
                         </div>
                         <div>
-                            <ContactForm />
+                            <ContactForm
+                                formData={formData}
+                                setFormData={setFormData}
+                            />
                         </div>
                     </div>
                 </div>

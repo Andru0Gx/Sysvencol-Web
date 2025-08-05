@@ -34,7 +34,7 @@ const slides = [
         buttons: [
             {
                 label: "Ver Servicios",
-                href: "/services/1",
+                href: "/services",
                 icon: <ChevronRight className="ml-2 h-4 w-4" />,
                 target: "",
             },
@@ -50,7 +50,7 @@ const slides = [
         buttons: [
             {
                 label: "Ver Servicios",
-                href: "/services/1",
+                href: "/services",
                 icon: <ChevronRight className="ml-2 h-4 w-4" />,
                 target: "",
             },
@@ -104,7 +104,7 @@ export default function HeroCarousel() {
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
-        }, 1000000);
+        }, 5000); // Cambia de slide cada 5 segundos
 
         return () => clearInterval(interval);
     }, []);

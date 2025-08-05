@@ -6,8 +6,6 @@ import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 import { ServicesInfo } from "@/lib/types";
 
@@ -16,7 +14,6 @@ import { useState } from "react";
 export default function ServicesPage() {
     return (
         <div className="flex min-h-screen flex-col">
-            <Navbar />
             <PageHeader
                 title="Nuestros Servicios"
                 description="Soluciones especializadas para la industria petrolera y petroquímica"
@@ -28,7 +25,6 @@ export default function ServicesPage() {
                     <CategoryTabs />
                 </div>
             </section>
-            <Footer />
         </div>
     );
 }

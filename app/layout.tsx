@@ -4,6 +4,10 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/scroll-to-top";
 import { Toaster } from "@/components/ui/toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +28,13 @@ export default function RootLayout({
                 <link rel="icon" href="/favicon.ico" />
             </head>
             <body className={inter.className}>
+                <Navbar />
                 {children}
                 <ScrollToTop />
                 <Toaster />
+                <Analytics />
+                <SpeedInsights />
+                <Footer />
             </body>
         </html>
     );

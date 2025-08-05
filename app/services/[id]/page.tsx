@@ -9,8 +9,6 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import { ServicesInfo } from "@/lib/types";
 
 function slugify(str: string) {
@@ -38,7 +36,6 @@ export default async function ServiceDetailPage({
     if (!service) {
         return (
             <div className="flex min-h-screen flex-col">
-                <Navbar />
                 <div className="container mx-auto flex flex-1 items-center justify-center px-4 py-16 text-center">
                     <div>
                         <h1 className="text-3xl font-bold text-[#243f60]">
@@ -55,15 +52,12 @@ export default async function ServiceDetailPage({
                         </Link>
                     </div>
                 </div>
-                <Footer />
             </div>
         );
     }
 
     return (
         <div className="flex min-h-screen flex-col">
-            <Navbar />
-
             <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
                 {/* Breadcrumbs */}
                 <div className="mb-8 hover:bg-gray-100 px-2 py-1 rounded-full w-fit">
@@ -270,8 +264,6 @@ export default async function ServiceDetailPage({
                     </div>
                 )}
             </div>
-
-            <Footer />
         </div>
     );
 }

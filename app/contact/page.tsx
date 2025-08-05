@@ -7,9 +7,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { ContactForm } from "@/components/contact-form";
 import { Card, CardContent } from "@/components/ui/card";
-import Navbar from "@/components/navbar";
 import PageHeader from "@/components/page-header";
-import Footer from "@/components/footer";
 
 export default function ContactPage() {
     const searchParams = useSearchParams();
@@ -58,7 +56,6 @@ export default function ContactPage() {
 
     return (
         <div className="flex min-h-screen flex-col">
-            <Navbar />
             <PageHeader
                 title="Contacto"
                 description="Estamos aquí para ayudarle. Contáctenos hoy mismo."
@@ -189,7 +186,6 @@ export default function ContactPage() {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     );
 }

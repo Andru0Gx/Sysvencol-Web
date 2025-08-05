@@ -2,8 +2,6 @@ import Image from "next/image";
 import { Bold, CheckCircle2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import PageHeader from "@/components/page-header";
 
 import MisionVision from "@/components/about/mision&vision";
@@ -13,8 +11,6 @@ import Valores from "@/components/about/valores";
 export default function AboutPage() {
     return (
         <div className="flex min-h-screen flex-col">
-            <Navbar />
-
             {/* <PageHeader
                 title="Nosotros"
                 description="Conoce más sobre Sysvencol y nuestra trayectoria en la industria"
@@ -48,7 +44,6 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
-            <Footer />
         </div>
     );
 }

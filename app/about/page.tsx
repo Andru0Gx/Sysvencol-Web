@@ -36,12 +36,14 @@ export default function AboutPage() {
                             ayudarle con sus necesidades específicas
                         </p>
                         <div className="mt-8">
-                            <Button
-                                size="lg"
-                                className="bg-white text-[#243f60] hover:bg-white/90"
-                            >
-                                Contáctanos
-                            </Button>
+                            <a href="/contact">
+                                <Button
+                                    size="lg"
+                                    className="bg-white text-[#243f60] hover:bg-white/90"
+                                >
+                                    Contáctanos
+                                </Button>
+                            </a>
                         </div>
                     </div>
                 </div>

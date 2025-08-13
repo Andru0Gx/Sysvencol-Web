@@ -69,14 +69,14 @@ export const ServicesInfo = {
             title: "Completación de Pozos",
             description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
             icon: "/Icons/1.svg",
-            imageUrl: "/Home/Servicio_2.webp",
+            imageUrl: "/Services/Completion.webp",
             url: "/services/completacion-de-pozos"
         },
         {
             title: "Intervención de Pozos",
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             icon: "/Icons/2.svg",
-            imageUrl: "/Home/Servicio_3.webp",
+            imageUrl: "/Home/Herramientas.webp",
             url: "/services/intervencion-de-pozos"
         },
         {
@@ -94,7 +94,7 @@ export const ServicesInfo = {
             description: "Soluciones avanzadas para la Completación de pozos petroleros, optimizando la producción y seguridad.",
             CompleteDescription: "La Completación de Pozos es una etapa fundamental en la industria petrolera, ya que define la manera en que un pozo será preparado para la extracción eficiente y segura de hidrocarburos. En Sysvencol, ofrecemos soluciones integrales que abarcan desde el diseño y selección de equipos hasta la instalación de sistemas avanzados de completación, adaptándonos a las condiciones más exigentes, como pozos de alta presión y alta temperatura (HPHT). Nuestro enfoque se centra en maximizar la productividad, garantizar la integridad del pozo a largo plazo y reducir los riesgos operacionales. Utilizamos tecnología de punta y un equipo humano altamente calificado para asegurar que cada pozo cumpla con los más altos estándares de calidad y seguridad, permitiendo a nuestros clientes alcanzar sus objetivos de producción de manera sostenible y eficiente.",
             icon: "/Icons/1.svg",
-            imageUrl: "/Home/Servicio_2.webp",
+            imageUrl: "/Services/Completion.webp",
             url: "/services/completacion-de-pozos",
             category: "Pozos",
             content: [
@@ -146,7 +146,7 @@ export const ServicesInfo = {
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             CompleteDescription: "La Intervención de Pozos es esencial para mantener y restaurar la productividad de los yacimientos a lo largo de la vida útil del pozo. En Sysvencol, brindamos servicios especializados que incluyen operaciones de reparación, estimulación, limpieza y reacondicionamiento, utilizando herramientas y técnicas de última generación. Nuestro objetivo es resolver problemas como obstrucciones, daños en la formación o equipos, y optimizar el flujo de hidrocarburos, todo ello bajo estrictos estándares de seguridad y eficiencia. Gracias a nuestra experiencia y capacidad técnica, ayudamos a nuestros clientes a prolongar la vida útil de sus pozos, reducir tiempos de inactividad y maximizar el retorno de la inversión, adaptándonos a los desafíos específicos de cada operación.",
             icon: "/Icons/2.svg",
-            imageUrl: "/Home/Servicio_3.webp",
+            imageUrl: "/Home/Herramientas.webp",
             url: "/services/intervencion-de-pozos",
             category: "Pozos",
             content: [
@@ -312,6 +312,41 @@ export const ServicesInfo = {
                 }
             ]
         },
+
+        // "Diseño y Fabricación de Piezas": {
+        //     "title": "Diseño y Fabricación de Piezas",
+        //     "description": "Servicios de diseño, ingeniería y fabricación de componentes especializados para la industria petrolera.",
+        //     "CompleteDescription": "En Sysvencol, ofrecemos una solución integral de diseño y fabricación de piezas a la medida. Nuestro servicio abarca desde la conceptualización y la creación de planos detallados de ingeniería hasta la producción de componentes de alta precisión. Utilizamos software de diseño CAD/CAM para asegurar la exactitud de cada pieza y seleccionamos los materiales más adecuados, como aceros de alta resistencia, aleaciones especiales o polímeros de ingeniería, para garantizar la durabilidad y el rendimiento en los entornos más exigentes. Nos especializamos en la creación de repuestos, componentes críticos y herramientas especializadas, optimizando la cadena de suministro y reduciendo los tiempos de inactividad de nuestros clientes. Nuestro equipo técnico trabaja en estrecha colaboración contigo para transformar tus necesidades en soluciones tangibles y eficientes.",
+        //     "icon": "",
+        //     "imageUrl": "Poner imagen de piezas industriales o un taller de mecanizado.",
+        //     "url": "/services/diseno-y-fabricacion-de-piezas",
+        //     "category": "Producción",
+        //     "content": [
+        //         "Diseño e Ingeniería Inversa",
+        //         "Fabricación por Mecanizado CNC",
+        //         "Selección de Materiales",
+        //         "Control de Calidad"
+        //     ],
+        //     "PostContent": [
+        //         {
+        //             "title": "Diseño e Ingeniería Inversa",
+        //             "paragraph": "Ofrecemos servicios de diseño de piezas a partir de especificaciones detalladas o mediante ingeniería inversa, donde recreamos planos y modelos 3D a partir de una pieza existente. Esto permite a Sysvencol generar prototipos o replicar componentes obsoletos, garantizando que el diseño cumpla con los estándares de la industria y se adapte perfectamente a su aplicación."
+        //         },
+        //         {
+        //             "title": "Fabricación por Mecanizado CNC",
+        //             "paragraph": "Utilizamos tecnología de mecanizado de Control Numérico Computarizado (CNC) para la fabricación de piezas con alta precisión y repetibilidad. Este método nos permite producir componentes de geometrías complejas con tolerancias muy ajustadas, esenciales para el funcionamiento seguro y eficiente de la maquinaria en la industria petrolera."
+        //         },
+        //         {
+        //             "title": "Selección de Materiales",
+        //             "paragraph": "La elección del material es crucial para la durabilidad de los componentes. Nuestros expertos de Sysvencol asesoran en la selección de materiales, incluyendo aceros inoxidables, aleaciones de níquel, titanio, y polímeros de alto rendimiento, optimizando la resistencia a la corrosión, la temperatura y la presión para cada aplicación específica."
+        //         },
+        //         {
+        //             "title": "Control de Calidad y Pruebas",
+        //             "paragraph": "Cada pieza fabricada pasa por un riguroso proceso de control de calidad. Utilizamos métodos de inspección no destructiva (PND) como las partículas magnéticas y pruebas ultrasónicas, además de mediciones de precisión, para asegurar que cada componente cumpla con las especificaciones técnicas y los estándares de seguridad requeridos por la industria."
+        //         }
+        //     ]
+        // },
+
         "Monitoreo de Yacimientos": {
             title: "Monitoreo de Yacimientos",
             description: "Soluciones para el monitoreo de yacimientos petroleros.",

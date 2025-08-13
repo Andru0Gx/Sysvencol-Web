@@ -312,34 +312,6 @@ export const ServicesInfo = {
                 }
             ]
         },
-        "Soporte Logístico": {
-            title: "Soporte Logístico",
-            description: "Servicios de soporte logístico para la industria.",
-            CompleteDescription: "El Soporte Logístico es un componente clave para el éxito de cualquier operación industrial. En Sysvencol, proporcionamos servicios logísticos integrales que incluyen el suministro de unidades de vacío, generadores diésel y plantas de tratamiento, entre otros. Nuestra misión es asegurar que nuestros clientes cuenten con los recursos y el respaldo necesarios para mantener la continuidad de sus operaciones, optimizando tiempos y costos. Nos enfocamos en la eficiencia, la puntualidad y la adaptabilidad, ofreciendo soluciones a medida para cada proyecto y sector industrial.",
-            icon: "",
-            imageUrl: "/Services/Logistica.webp",
-            url: "/services/soporte-logistico",
-            category: "Logística",
-            content: [
-                "Unidades de Vacío",
-                "Generadores Diésel",
-                "Plantas de Tratamiento"
-            ],
-            PostContent: [
-                {
-                    title: "Unidades de Vacío",
-                    paragraph: "Contamos con una flota de unidades de vacío de alta capacidad, esenciales para la gestión eficiente de fluidos, lodos y residuos en entornos industriales. Son fundamentales en operaciones de limpieza de tanques, pozos o derrames, permitiendo una rápida y segura recolección y transporte de materiales, lo que contribuye a la seguridad operativa y el cumplimiento ambiental, todo ello provisto por Sysvencol."
-                },
-                {
-                    title: "Generadores Diésel",
-                    paragraph: "La energía es el corazón de cualquier operación. Nuestros generadores diésel son equipos robustos y fiables que garantizan un suministro de energía ininterrumpido en tus instalaciones, incluso en las ubicaciones más remotas o en situaciones de emergencia. En Sysvencol, ofrecemos soluciones de alquiler y servicio técnico para asegurar que tus proyectos nunca se vean afectados por cortes de energía, manteniendo la productividad al máximo."
-                },
-                {
-                    title: "Plantas de Tratamiento",
-                    paragraph: "La gestión responsable de los efluentes es un imperativo. En Sysvencol, proporcionamos plantas de tratamiento móviles y fijas para aguas residuales, lodos y otros efluentes industriales. Estas soluciones cumplen con las normativas ambientales más estrictas, transformando los residuos en recursos o en efluentes seguros para su disposición, lo que no solo protege el medio ambiente sino que también optimiza tus operaciones."
-                }
-            ]
-        },
         "Monitoreo de Yacimientos": {
             title: "Monitoreo de Yacimientos",
             description: "Soluciones para el monitoreo de yacimientos petroleros.",
@@ -365,6 +337,34 @@ export const ServicesInfo = {
                 {
                     title: "Fibra Óptica",
                     paragraph: "La tecnología de fibra óptica ha revolucionado el monitoreo de yacimientos al permitir la adquisición de datos de alta resolución a lo largo de grandes distancias. Utilizando la dispersión de la luz, nuestros sistemas de fibra óptica de Sysvencol pueden detectar cambios mínimos de temperatura y tensión a lo largo de todo el cable. Esto proporciona un perfil continuo y en tiempo real de la actividad del pozo, permitiendo la detección de cross-flow, flujos de gas, fugas y otros eventos críticos que afectan el rendimiento del yacimiento."
+                }
+            ]
+        },
+        "Soporte Logístico": {
+            title: "Soporte Logístico",
+            description: "Servicios de soporte logístico para la industria.",
+            CompleteDescription: "El Soporte Logístico es un componente clave para el éxito de cualquier operación industrial. En Sysvencol, proporcionamos servicios logísticos integrales que incluyen el suministro de unidades de vacío, generadores diésel y plantas de tratamiento, entre otros. Nuestra misión es asegurar que nuestros clientes cuenten con los recursos y el respaldo necesarios para mantener la continuidad de sus operaciones, optimizando tiempos y costos. Nos enfocamos en la eficiencia, la puntualidad y la adaptabilidad, ofreciendo soluciones a medida para cada proyecto y sector industrial.",
+            icon: "",
+            imageUrl: "/Services/Logistica.webp",
+            url: "/services/soporte-logistico",
+            category: "Logística",
+            content: [
+                "Unidades de Vacío",
+                "Generadores Diésel",
+                "Plantas de Tratamiento"
+            ],
+            PostContent: [
+                {
+                    title: "Unidades de Vacío",
+                    paragraph: "Contamos con una flota de unidades de vacío de alta capacidad, esenciales para la gestión eficiente de fluidos, lodos y residuos en entornos industriales. Son fundamentales en operaciones de limpieza de tanques, pozos o derrames, permitiendo una rápida y segura recolección y transporte de materiales, lo que contribuye a la seguridad operativa y el cumplimiento ambiental, todo ello provisto por Sysvencol."
+                },
+                {
+                    title: "Generadores Diésel",
+                    paragraph: "La energía es el corazón de cualquier operación. Nuestros generadores diésel son equipos robustos y fiables que garantizan un suministro de energía ininterrumpido en tus instalaciones, incluso en las ubicaciones más remotas o en situaciones de emergencia. En Sysvencol, ofrecemos soluciones de alquiler y servicio técnico para asegurar que tus proyectos nunca se vean afectados por cortes de energía, manteniendo la productividad al máximo."
+                },
+                {
+                    title: "Plantas de Tratamiento",
+                    paragraph: "La gestión responsable de los efluentes es un imperativo. En Sysvencol, proporcionamos plantas de tratamiento móviles y fijas para aguas residuales, lodos y otros efluentes industriales. Estas soluciones cumplen con las normativas ambientales más estrictas, transformando los residuos en recursos o en efluentes seguros para su disposición, lo que no solo protege el medio ambiente sino que también optimiza tus operaciones."
                 }
             ]
         }

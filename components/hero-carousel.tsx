@@ -95,10 +95,12 @@ export default function HeroCarousel() {
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+        clearInterval(0);
     };
 
     const prevSlide = () => {
         setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
+        clearInterval(0);
     };
 
     useEffect(() => {

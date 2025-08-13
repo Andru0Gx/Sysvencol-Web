@@ -84,7 +84,7 @@ export const ServicesInfo = {
             description: "Soluciones integrales para el levantamiento artificial y control de arena en pozos petroleros.",
             icon: "/Icons/3.svg",
             imageUrl: "/Home/Servicio_1.webp",
-            url: "/services/elevacion-artificial-y-control-de-arena"
+            url: "/services/levantamiento-artificial-y-control-de-arena"
         }
     ],
 
@@ -199,13 +199,13 @@ export const ServicesInfo = {
                 }
             ]
         },
-        "Elevación Artificial y Control de Arena": {
-            title: "Elevación Artificial y Control de Arena",
+        "Levantamiento Artificial y Control de Arena": {
+            title: "Levantamiento Artificial y Control de Arena",
             description: "Soluciones integrales para el levantamiento artificial y control de arena en pozos petroleros.",
-            CompleteDescription: "La Elevación Artificial y el Control de Arena son técnicas clave para mantener y optimizar la producción en pozos donde la presión natural del yacimiento no es suficiente o existen riesgos de migración de partículas sólidas. En Sysvencol, implementamos sistemas de levantamiento artificial como bombas de cavidad progresiva (PCP), gas lift y otros métodos, junto con soluciones avanzadas de control de arena como mallas premium, revestimientos ranurados y empacadores. Nuestro enfoque se basa en la selección óptima de equipos y la integración de tecnologías que permiten aumentar la eficiencia, reducir costos operativos, minimizar el desgaste de los componentes y proteger los equipos. Acompañamos a nuestros clientes en todo el proceso, desde el análisis técnico hasta la puesta en marcha y el mantenimiento, asegurando una operación continua, confiable y segura, minimizando riesgos y prolongando la vida útil de sus activos.",
+            CompleteDescription: "El levantamiento Artificial y el Control de Arena son técnicas clave para mantener y optimizar la producción en pozos donde la presión natural del yacimiento no es suficiente o existen riesgos de migración de partículas sólidas. En Sysvencol, implementamos sistemas de levantamiento artificial como bombas de cavidad progresiva (PCP), gas lift y otros métodos, junto con soluciones avanzadas de control de arena como mallas premium, revestimientos ranurados y empacadores. Nuestro enfoque se basa en la selección óptima de equipos y la integración de tecnologías que permiten aumentar la eficiencia, reducir costos operativos, minimizar el desgaste de los componentes y proteger los equipos. Acompañamos a nuestros clientes en todo el proceso, desde el análisis técnico hasta la puesta en marcha y el mantenimiento, asegurando una operación continua, confiable y segura, minimizando riesgos y prolongando la vida útil de sus activos.",
             icon: "/Icons/3.svg",
             imageUrl: "/Home/Servicio_1.webp",
-            url: "/services/elevacion-artificial-y-control-de-arena",
+            url: "/services/levantamiento-artificial-y-control-de-arena",
             category: "Producción",
             content: [
                 "Mandril de Levantamiento por Gas",

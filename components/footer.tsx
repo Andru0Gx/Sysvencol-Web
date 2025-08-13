@@ -35,10 +35,14 @@ export default function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <i
-                                        className={`fa-${social.type} fa-${social.icon} h-5 w-5`}
-                                        aria-hidden="true"
-                                    ></i>
+                                    <img
+                                        src={`/icons/${social.icon}.svg`}
+                                        alt={social.name}
+                                        className="h-6 w-6"
+                                        loading="lazy"
+                                        width={24}
+                                        height={24}
+                                    ></img>
                                     {/* <span>{social.name}</span> */}
                                 </Link>
                             ))}

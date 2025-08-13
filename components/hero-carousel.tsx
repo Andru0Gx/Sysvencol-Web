@@ -12,7 +12,7 @@ const slides = [
         id: 1,
         image: "/Home/Sysvencol.webp",
         alt: "Sysvencol, C.A.",
-        title: "Soluciones industriales de alta calidad",
+        title: "Soluciones de alta calidad",
         description:
             "Especialistas en servicios y herramientas para la industria petrolera y petroquímica",
         buttons: [
@@ -43,8 +43,8 @@ const slides = [
     {
         id: 3,
         image: "/Home/Carrillo.webp",
-        alt: "Servicios industriales",
-        title: "Servicios industriales",
+        alt: "Servicios petroleros",
+        title: "Servicios petroleros",
         description:
             "Especialistas en servicios para la industria petrolera y petroquímica, con equipos de última generación.",
         buttons: [

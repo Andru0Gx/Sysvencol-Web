@@ -62,10 +62,14 @@ export default function Navbar({ userName }: { userName?: string }) {
                         </div>
                         <div className="flex items-center text-sm">
                             {name ? (
-                                <span className="flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
+                                <Link
+                                    href="/admin"
+                                    className="flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium hover:bg-emerald-200 transition-colors"
+                                    aria-label="Ir al panel de administración"
+                                >
                                     <User className="h-4 w-4 mr-1" />
                                     {name}
-                                </span>
+                                </Link>
                             ) : (
                                 <Link
                                     href="/login"
@@ -268,9 +272,13 @@ export default function Navbar({ userName }: { userName?: string }) {
                                         Contacto
                                     </Link>
                                     {name ? (
-                                        <div className="text-lg text-gray-600">
+                                        <Link
+                                            href="/admin"
+                                            className="text-lg text-[#243f60] hover:underline"
+                                            onClick={() => setIsOpen(false)}
+                                        >
                                             Sesión: {name}
-                                        </div>
+                                        </Link>
                                     ) : (
                                         <Link
                                             href="/login"

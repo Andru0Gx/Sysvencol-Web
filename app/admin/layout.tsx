@@ -18,6 +18,7 @@ import {
     SidebarInset,
 } from "@/components/ui/sidebar";
 import { LayoutDashboard, Mail, Users } from "lucide-react";
+import LogoutButton from "@/components/admin/logout-button";
 
 export const metadata: Metadata = {
     title: "Admin | Sysvencol",
@@ -85,11 +86,7 @@ export default async function AdminLayout({
                 </SidebarContent>
                 {/* Sidebar footer with logout */}
                 <div className="mt-auto p-2">
-                    <form action={logoutAction}>
-                        <button className="w-full rounded bg-destructive px-3 py-2 text-xs font-medium text-destructive-foreground hover:opacity-90">
-                            Cerrar sesión
-                        </button>
-                    </form>
+                    <LogoutButton />
                 </div>
                 {/* Rail not needed when collapsible is 'none' */}
             </Sidebar>

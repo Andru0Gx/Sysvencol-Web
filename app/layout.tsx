@@ -7,6 +7,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import Navbar from "@/components/navbar";
+import { cookies } from "next/headers";
+import { verifySession } from "@/lib/auth";
 import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -17,11 +19,15 @@ export const metadata: Metadata = {
         "Empresa especializada en servicios y herramientas para la industria petrolera y petroquímica.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("session")?.value;
+    const session = verifySession(token);
+    const userName = session?.name;
     return (
         <html lang="es" className="scroll-smooth">
             <head>
@@ -32,7 +38,7 @@ export default function RootLayout({
                 ></script>
             </head>
             <body className={inter.className}>
-                <Navbar />
+                <Navbar userName={userName} />
                 {children}
                 <ScrollToTop />
                 <Toaster />

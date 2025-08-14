@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronDown, Globe, Phone, Mail, Lock } from "lucide-react";
+import { Menu, ChevronDown, Globe, Phone, Mail, User } from "lucide-react";
 import LogoSysvencol from "@/components/icons/Logo";
 import { EnterpriseInfo } from "@/lib/types";
 
@@ -17,9 +17,32 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-export default function Navbar() {
+export default function Navbar({ userName }: { userName?: string }) {
     const [isOpen, setIsOpen] = useState(false);
+    const [name, setName] = useState<string | undefined>(userName);
     const pathname = usePathname();
+
+    useEffect(() => {
+        let abort = false;
+        async function fetchSession() {
+            try {
+                const res = await fetch("/api/session", { cache: "no-store" });
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!abort)
+                    setName(data?.authenticated ? data.name : undefined);
+            } catch {}
+        }
+        // on mount
+        fetchSession();
+        // on window focus
+        const onFocus = () => fetchSession();
+        window.addEventListener("focus", onFocus);
+        return () => {
+            abort = true;
+            window.removeEventListener("focus", onFocus);
+        };
+    }, []);
 
     return (
         <header className="w-full ">
@@ -38,10 +61,21 @@ export default function Navbar() {
                             </div>
                         </div>
                         <div className="flex items-center text-sm">
-                            <span className="flex items-center px-3 py-1 rounded-full bg-gray-200 text-gray-500 text-xs font-medium">
-                                <Lock className="h-4 w-4 mr-1" />
-                                Próximamente: Inicio de sesión
-                            </span>
+                            {name ? (
+                                <span className="flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium">
+                                    <User className="h-4 w-4 mr-1" />
+                                    {name}
+                                </span>
+                            ) : (
+                                <Link
+                                    href="/login"
+                                    className="flex items-center px-3 py-1 rounded-full bg-[#243f60] text-white text-xs font-medium hover:bg-[#1a2e48] transition-colors"
+                                    aria-label="Iniciar sesión"
+                                >
+                                    <User className="h-4 w-4 mr-1" />
+                                    Iniciar sesión
+                                </Link>
+                            )}
                         </div>
                     </div>
                     {/* <div className="mt-2 flex items-center space-x-4 sm:mt-0">
@@ -233,6 +267,19 @@ export default function Navbar() {
                                     >
                                         Contacto
                                     </Link>
+                                    {name ? (
+                                        <div className="text-lg text-gray-600">
+                                            Sesión: {name}
+                                        </div>
+                                    ) : (
+                                        <Link
+                                            href="/login"
+                                            className="text-lg text-gray-600 hover:text-[#243f60]"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            Iniciar sesión
+                                        </Link>
+                                    )}
                                     {/* <Link
                                         href="/blog"
                                         className="text-lg text-gray-600 hover:text-[#243f60]"

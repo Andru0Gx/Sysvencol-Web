@@ -63,8 +63,12 @@ export default function LoginPage() {
                 return;
             }
 
-            // Redirigir al panel de administración
-            router.replace("/admin");
+            // Redirigir y forzar recarga para que el layout lea la nueva cookie
+            if (typeof window !== "undefined") {
+                window.location.href = "/admin";
+            } else {
+                router.replace("/admin");
+            }
         } catch (err) {
             toast({
                 title: "Error de red",

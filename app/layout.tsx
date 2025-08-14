@@ -32,10 +32,6 @@ export default async function RootLayout({
         <html lang="es" className="scroll-smooth">
             <head>
                 <link rel="icon" href="/favicon.ico" />
-                <script
-                    src="https://kit.fontawesome.com/1e900e1766.js"
-                    crossOrigin="anonymous"
-                ></script>
             </head>
             <body className={inter.className}>
                 <Navbar userName={userName} />

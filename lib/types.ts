@@ -16,35 +16,35 @@ export const EnterpriseInfo = {
             url: "https://www.linkedin.com/company/sysvencol-c-a",
             handle: "@Sysvencol",
             name: "LinkedIn",
-            icon: "linkedin",
+            icon: "Linkedin",
             type: "brands"
         },
         {
             url: "https://www.instagram.com/Sysvencol",
             handle: "@Sysvencol",
             name: "Instagram",
-            icon: "instagram",
+            icon: "Instagram",
             type: "brands"
         },
         {
             url: "https://www.youtube.com/@Sysvencol?sub_confirmation=1",
             handle: "@Sysvencol",
             name: "YouTube",
-            icon: "youtube",
+            icon: "Youtube",
             type: "brands"
         },
         {
             url: "https://www.facebook.com/Sysvencol",
             handle: "@Sysvencol",
             name: "Facebook",
-            icon: "facebook",
+            icon: "Facebook",
             type: "brands"
         },
         {
             url: "https://www.threads.net/@sysvencol",
             handle: "@Sysvencol",
             name: "Threads",
-            icon: "threads",
+            icon: "Threads",
             type: "brands"
         },
         {
@@ -76,7 +76,7 @@ export const ServicesInfo = {
             title: "Intervención de Pozos",
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             icon: "/Icons/2.svg",
-            imageUrl: "/Home/Herramientas.webp",
+            imageUrl: "/Home/herramientas.webp",
             url: "/services/intervencion-de-pozos"
         },
         {

@@ -43,7 +43,6 @@ export default function Footer() {
                                         width={24}
                                         height={24}
                                     ></img>
-                                    {/* <span>{social.name}</span> */}
                                 </Link>
                             ))}
                         </div>

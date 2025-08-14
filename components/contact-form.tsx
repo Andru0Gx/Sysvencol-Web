@@ -149,35 +149,56 @@ export function ContactForm({
                         <option value="" className="text-[#243f60]/50">
                             Seleccione un asunto
                         </option>
-                        <option value="general" className="text-[#243f60]">
+                        <option
+                            value="Consulta General"
+                            className="text-[#243f60]"
+                        >
                             Consulta General
                         </option>
-                        <option value="quote" className="text-[#243f60]">
+                        <option
+                            value="Solicitud de Cotización"
+                            className="text-[#243f60]"
+                        >
                             Solicitud de Cotización
                         </option>
-                        <option value="support" className="text-[#243f60]">
+                        <option
+                            value="Soporte Técnico"
+                            className="text-[#243f60]"
+                        >
                             Soporte Técnico
                         </option>
-                        <option value="completacion" className="text-[#243f60]">
+                        <option
+                            value="Completación de Pozos"
+                            className="text-[#243f60]"
+                        >
                             Completación de Pozos
                         </option>
-                        <option value="intervencion" className="text-[#243f60]">
+                        <option
+                            value="Intervención de Pozos"
+                            className="text-[#243f60]"
+                        >
                             Intervención de Pozos
                         </option>
-                        <option value="elevacion" className="text-[#243f60]">
+                        <option
+                            value="Elevación Artificial y Control de Arena"
+                            className="text-[#243f60]"
+                        >
                             Elevación Artificial y Control de Arena
                         </option>
                         <option
-                            value="infraestructura"
+                            value="Infraestructura Digital"
                             className="text-[#243f60]"
                         >
                             Infraestructura Digital
                         </option>
-                        <option value="pnd" className="text-[#243f60]">
+                        <option
+                            value="Pruebas No Destructivas"
+                            className="text-[#243f60]"
+                        >
                             Pruebas No Destructivas
                         </option>
-                        <option value="other" className="text-[#243f60]">
-                            Otro
+                        <option value="Otros" className="text-[#243f60]">
+                            Otros
                         </option>
                     </select>
                 </div>
@@ -266,32 +287,50 @@ export function ContactForm({
                     <option value="" className="text-[#243f60]/50">
                         Seleccione un asunto
                     </option>
-                    <option value="general" className="text-[#243f60]">
+                    <option value="Consulta General" className="text-[#243f60]">
                         Consulta General
                     </option>
-                    <option value="quote" className="text-[#243f60]">
+                    <option
+                        value="Solicitud de Cotización"
+                        className="text-[#243f60]"
+                    >
                         Solicitud de Cotización
                     </option>
-                    <option value="support" className="text-[#243f60]">
+                    <option value="Soporte Técnico" className="text-[#243f60]">
                         Soporte Técnico
                     </option>
-                    <option value="completacion" className="text-[#243f60]">
+                    <option
+                        value="Completación de Pozos"
+                        className="text-[#243f60]"
+                    >
                         Completación de Pozos
                     </option>
-                    <option value="intervencion" className="text-[#243f60]">
+                    <option
+                        value="Intervención de Pozos"
+                        className="text-[#243f60]"
+                    >
                         Intervención de Pozos
                     </option>
-                    <option value="elevacion" className="text-[#243f60]">
+                    <option
+                        value="Elevación Artificial y Control de Arena"
+                        className="text-[#243f60]"
+                    >
                         Elevación Artificial y Control de Arena
                     </option>
-                    <option value="infraestructura" className="text-[#243f60]">
+                    <option
+                        value="Infraestructura Digital"
+                        className="text-[#243f60]"
+                    >
                         Infraestructura Digital
                     </option>
-                    <option value="pnd" className="text-[#243f60]">
+                    <option
+                        value="Pruebas No Destructivas"
+                        className="text-[#243f60]"
+                    >
                         Pruebas No Destructivas
                     </option>
-                    <option value="other" className="text-[#243f60]">
-                        Otro
+                    <option value="Otros" className="text-[#243f60]">
+                        Otros
                     </option>
                 </select>
             </div>

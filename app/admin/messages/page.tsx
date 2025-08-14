@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { verifySession } from "@/lib/auth";
 import PageHeader from "@/components/page-header";
+import MessagesTable from "./messages-table";
 
 export default async function MessagesAdminPage() {
     const cookieStore = await cookies();
@@ -14,8 +15,8 @@ export default async function MessagesAdminPage() {
                 title="Mensajes"
                 description="Listado y detalles de mensajes recibidos"
             />
-            <div className="mt-6 text-gray-600">
-                Listado de mensajes y detalle (pendiente de conexión a DB).
+            <div className="mt-6">
+                <MessagesTable />
             </div>
         </div>
     );

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, ChevronDown, Globe, Phone, Mail } from "lucide-react";
+import { Menu, ChevronDown, Globe, Phone, Mail, Lock } from "lucide-react";
 import LogoSysvencol from "@/components/icons/Logo";
 import { EnterpriseInfo } from "@/lib/types";
 
@@ -26,14 +26,22 @@ export default function Navbar() {
             {/* Top Bar */}
             <div className="bg-gray-100 py-2">
                 <div className="container mx-auto flex flex-col justify-between px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-                    <div className="flex items-center space-x-4">
-                        <div className="flex items-center text-sm text-gray-600">
-                            <Phone className="mr-2 h-4 w-4" />
-                            <span> {EnterpriseInfo.phone} </span>
+                    <div className="flex items-center justify-between w-full">
+                        <div className="flex items-center space-x-4">
+                            <div className="flex items-center text-sm text-gray-600">
+                                <Phone className="mr-2 h-4 w-4" />
+                                <span> {EnterpriseInfo.phone} </span>
+                            </div>
+                            <div className="flex items-center text-sm text-gray-600">
+                                <Mail className="mr-2 h-4 w-4" />
+                                <span>{EnterpriseInfo.email}</span>
+                            </div>
                         </div>
-                        <div className="flex items-center text-sm text-gray-600">
-                            <Mail className="mr-2 h-4 w-4" />
-                            <span>{EnterpriseInfo.email}</span>
+                        <div className="flex items-center text-sm">
+                            <span className="flex items-center px-3 py-1 rounded-full bg-gray-200 text-gray-500 text-xs font-medium">
+                                <Lock className="h-4 w-4 mr-1" />
+                                Próximamente: Inicio de sesión
+                            </span>
                         </div>
                     </div>
                     {/* <div className="mt-2 flex items-center space-x-4 sm:mt-0">

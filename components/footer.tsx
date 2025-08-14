@@ -36,13 +36,11 @@ export default function Footer() {
                                     rel="noopener noreferrer"
                                 >
                                     <img
-                                        src={`/icons/${social.icon}.svg`}
+                                        src={`/icons/${social.icon}.webp`}
                                         alt={social.name}
-                                        className="h-6 w-6"
+                                        className="h-6 w-auto object-contain"
                                         loading="lazy"
-                                        width={24}
-                                        height={24}
-                                    ></img>
+                                    />
                                 </Link>
                             ))}
                         </div>

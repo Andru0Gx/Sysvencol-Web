@@ -51,7 +51,7 @@ export const EnterpriseInfo = {
             url: "https://maps.app.goo.gl/1oVzd3hHnfTpffTk7",
             handle: "Sysvencol, C.A.",
             name: "Google Maps",
-            icon: "Google Maps",
+            icon: "Google-Maps",
             type: "solid"
         }
     ]

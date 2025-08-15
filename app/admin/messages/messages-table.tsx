@@ -123,16 +123,19 @@ export default function MessagesTable() {
             const st = (m.status || "").toLowerCase();
 
             // Global search
-            const matchesQ = !q
-                || m.name.toLowerCase().includes(q)
-                || m.email.toLowerCase().includes(q)
-                || m.phone.toLowerCase().includes(q)
-                || m.subject.toLowerCase().includes(q)
-                || m.message.toLowerCase().includes(q);
+            const matchesQ =
+                !q ||
+                m.name.toLowerCase().includes(q) ||
+                m.email.toLowerCase().includes(q) ||
+                m.phone.toLowerCase().includes(q) ||
+                m.subject.toLowerCase().includes(q) ||
+                m.message.toLowerCase().includes(q);
 
             // Top filters
-            const matchesTopImp = topImportance === "all" || imp === topImportance;
-            const matchesTopRead = topRead === "all" || (topRead === "read" ? isRead : !isRead);
+            const matchesTopImp =
+                topImportance === "all" || imp === topImportance;
+            const matchesTopRead =
+                topRead === "all" || (topRead === "read" ? isRead : !isRead);
 
             return matchesQ && matchesTopImp && matchesTopRead;
         });
@@ -140,20 +143,35 @@ export default function MessagesTable() {
 
     const displayed = useMemo(() => {
         if (!sortKey) return filtered;
-        const impW: Record<string, number> = { baja: 0, normal: 1, media: 2, alta: 3 };
-        const stW: Record<string, number> = { en_espera: 0, en_proceso: 1, completado: 2 };
+        const impW: Record<string, number> = {
+            baja: 0,
+            normal: 1,
+            media: 2,
+            alta: 3,
+        };
+        const stW: Record<string, number> = {
+            en_espera: 0,
+            en_proceso: 1,
+            completado: 2,
+        };
         const arr = [...filtered];
         arr.sort((a, b) => {
             let av: any;
             let bv: any;
             switch (sortKey) {
                 case "importance":
-                    av = impW[String(a.importance || "normal").toLowerCase()] ?? 1;
-                    bv = impW[String(b.importance || "normal").toLowerCase()] ?? 1;
+                    av =
+                        impW[String(a.importance || "normal").toLowerCase()] ??
+                        1;
+                    bv =
+                        impW[String(b.importance || "normal").toLowerCase()] ??
+                        1;
                     break;
                 case "status":
-                    av = stW[String(a.status || "en_espera").toLowerCase()] ?? 0;
-                    bv = stW[String(b.status || "en_espera").toLowerCase()] ?? 0;
+                    av =
+                        stW[String(a.status || "en_espera").toLowerCase()] ?? 0;
+                    bv =
+                        stW[String(b.status || "en_espera").toLowerCase()] ?? 0;
                     break;
                 case "name":
                     av = String(a.name || "").toLowerCase();
@@ -193,7 +211,8 @@ export default function MessagesTable() {
     }
 
     function SortIcon({ k }: { k: NonNullable<typeof sortKey> }) {
-        if (sortKey !== k) return <ArrowUpDown className="ml-1 h-3.5 w-3.5 opacity-60" />;
+        if (sortKey !== k)
+            return <ArrowUpDown className="ml-1 h-3.5 w-3.5 opacity-60" />;
         return sortDir === "asc" ? (
             <ArrowUp className="ml-1 h-3.5 w-3.5" />
         ) : (
@@ -304,7 +323,10 @@ export default function MessagesTable() {
                         onChange={(e) => setQuery(e.target.value)}
                         className="w-full sm:max-w-md"
                     />
-                    <Select value={topImportance} onValueChange={setTopImportance}>
+                    <Select
+                        value={topImportance}
+                        onValueChange={setTopImportance}
+                    >
                         <SelectTrigger className="w-[150px]">
                             <SelectValue placeholder="Importancia" />
                         </SelectTrigger>

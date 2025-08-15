@@ -36,7 +36,7 @@ export default function Footer() {
                                     rel="noopener noreferrer"
                                 >
                                     <img
-                                        src={`/icons/${social.icon}.webp`}
+                                        src={`/Icons/${social.icon}.webp`}
                                         alt={social.name}
                                         className="h-6 w-auto object-contain"
                                         loading="lazy"

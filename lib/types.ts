@@ -16,42 +16,42 @@ export const EnterpriseInfo = {
             url: "https://www.linkedin.com/company/sysvencol-c-a",
             handle: "@Sysvencol",
             name: "LinkedIn",
-            icon: "/icons/Linkedin.webp",
+            icon: "Linkedin",
             type: "brands"
         },
         {
             url: "https://www.instagram.com/Sysvencol",
             handle: "@Sysvencol",
             name: "Instagram",
-            icon: "/icons/Instagram.webp",
+            icon: "Instagram",
             type: "brands"
         },
         {
             url: "https://www.youtube.com/@Sysvencol?sub_confirmation=1",
             handle: "@Sysvencol",
             name: "YouTube",
-            icon: "/icons/Youtube.webp",
+            icon: "Youtube",
             type: "brands"
         },
         {
             url: "https://www.facebook.com/Sysvencol",
             handle: "@Sysvencol",
             name: "Facebook",
-            icon: "/icons/Facebook.webp",
+            icon: "Facebook",
             type: "brands"
         },
         {
             url: "https://www.threads.net/@sysvencol",
             handle: "@Sysvencol",
             name: "Threads",
-            icon: "/icons/Threads.webp",
+            icon: "Threads",
             type: "brands"
         },
         {
             url: "https://maps.app.goo.gl/1oVzd3hHnfTpffTk7",
             handle: "Sysvencol, C.A.",
             name: "Google Maps",
-            icon: "/icons/Google-Maps.webp",
+            icon: "Google-Maps",
             type: "solid"
         }
     ]

@@ -16,42 +16,42 @@ export const EnterpriseInfo = {
             url: "https://www.linkedin.com/company/sysvencol-c-a",
             handle: "@Sysvencol",
             name: "LinkedIn",
-            icon: "Linkedin",
+            icon: "/icons/Linkedin.webp",
             type: "brands"
         },
         {
             url: "https://www.instagram.com/Sysvencol",
             handle: "@Sysvencol",
             name: "Instagram",
-            icon: "Instagram",
+            icon: "/icons/Instagram.webp",
             type: "brands"
         },
         {
             url: "https://www.youtube.com/@Sysvencol?sub_confirmation=1",
             handle: "@Sysvencol",
             name: "YouTube",
-            icon: "Youtube",
+            icon: "/icons/Youtube.webp",
             type: "brands"
         },
         {
             url: "https://www.facebook.com/Sysvencol",
             handle: "@Sysvencol",
             name: "Facebook",
-            icon: "Facebook",
+            icon: "/icons/Facebook.webp",
             type: "brands"
         },
         {
             url: "https://www.threads.net/@sysvencol",
             handle: "@Sysvencol",
             name: "Threads",
-            icon: "Threads",
+            icon: "/icons/Threads.webp",
             type: "brands"
         },
         {
             url: "https://maps.app.goo.gl/1oVzd3hHnfTpffTk7",
             handle: "Sysvencol, C.A.",
             name: "Google Maps",
-            icon: "Google-Maps",
+            icon: "/icons/Google-Maps.webp",
             type: "solid"
         }
     ]
@@ -146,7 +146,7 @@ export const ServicesInfo = {
             description: "Servicios especializados para la intervención de pozos, garantizando eficiencia y seguridad.",
             CompleteDescription: "La Intervención de Pozos es esencial para mantener y restaurar la productividad de los yacimientos a lo largo de la vida útil del pozo. En Sysvencol, brindamos servicios especializados que incluyen operaciones de reparación, estimulación, limpieza y reacondicionamiento, utilizando herramientas y técnicas de última generación. Nuestro objetivo es resolver problemas como obstrucciones, daños en la formación o equipos, y optimizar el flujo de hidrocarburos, todo ello bajo estrictos estándares de seguridad y eficiencia. Gracias a nuestra experiencia y capacidad técnica, ayudamos a nuestros clientes a prolongar la vida útil de sus pozos, reducir tiempos de inactividad y maximizar el retorno de la inversión, adaptándonos a los desafíos específicos de cada operación.",
             icon: "/Icons/2.svg",
-            imageUrl: "/Home/Herramientas.webp",
+            imageUrl: "/Home/herramientas.webp",
             url: "/services/intervencion-de-pozos",
             category: "Pozos",
             content: [

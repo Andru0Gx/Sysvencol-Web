@@ -180,10 +180,10 @@ export function ContactForm({
                             Intervención de Pozos
                         </option>
                         <option
-                            value="Elevación Artificial y Control de Arena"
+                            value="Levantamiento Artificial y Control de Arena"
                             className="text-[#243f60]"
                         >
-                            Elevación Artificial y Control de Arena
+                            Levantamiento Artificial y Control de Arena
                         </option>
                         <option
                             value="Infraestructura Digital"
@@ -312,10 +312,10 @@ export function ContactForm({
                         Intervención de Pozos
                     </option>
                     <option
-                        value="Elevación Artificial y Control de Arena"
+                        value="Levantamiento Artificial y Control de Arena"
                         className="text-[#243f60]"
                     >
-                        Elevación Artificial y Control de Arena
+                        Levantamiento Artificial y Control de Arena
                     </option>
                     <option
                         value="Infraestructura Digital"

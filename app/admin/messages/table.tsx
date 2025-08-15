@@ -45,6 +45,8 @@ export type Message = {
     message: string;
     status?: "en_espera" | "en_proceso" | "completado";
     history?: any;
+    importance?: "alta" | "media" | "baja" | "normal";
+    is_read?: number | boolean;
 };
 
 export default function MessagesTable() {
@@ -173,6 +175,9 @@ export default function MessagesTable() {
                                     Asunto
                                 </TableHead>
                                 <TableHead className="text-muted-foreground">
+                                    Importancia
+                                </TableHead>
+                                <TableHead className="text-muted-foreground">
                                     Estado
                                 </TableHead>
                                 <TableHead className="text-right text-muted-foreground">
@@ -182,8 +187,17 @@ export default function MessagesTable() {
                         </TableHeader>
                         <TableBody>
                             {filtered.map((m) => (
-                                <TableRow key={m.id}>
-                                    <TableCell>{m.name}</TableCell>
+                                <TableRow
+                                    key={m.id}
+                                    className={!m.is_read ? "bg-red-50/40" : ""}
+                                >
+                                    <TableCell
+                                        className={
+                                            !m.is_read ? "font-semibold" : ""
+                                        }
+                                    >
+                                        {m.name}
+                                    </TableCell>
                                     <TableCell className="text-muted-foreground">
                                         {m.email}
                                     </TableCell>
@@ -192,6 +206,11 @@ export default function MessagesTable() {
                                     </TableCell>
                                     <TableCell className="text-muted-foreground">
                                         {m.subject}
+                                    </TableCell>
+                                    <TableCell>
+                                        <span className="inline-flex items-center rounded px-2 py-0.5 text-xs font-medium border">
+                                            {m.importance || "normal"}
+                                        </span>
                                     </TableCell>
                                     <TableCell>
                                         {statusBadge(m.status)}

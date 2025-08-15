@@ -14,17 +14,31 @@ function deny(msg = "No autorizado") {
     );
 }
 
+async function ensureContactSchema() {
+    try {
+        const res = await turso.execute({ sql: `PRAGMA table_info(contact_messages)`, args: [] });
+        const cols = new Set((res as any).rows?.map((r: any) => String(r.name)) || []);
+        if (!cols.has("importance")) {
+            await turso.execute({ sql: `ALTER TABLE contact_messages ADD COLUMN importance TEXT NOT NULL DEFAULT 'normal'`, args: [] });
+        }
+        if (!cols.has("is_read")) {
+            await turso.execute({ sql: `ALTER TABLE contact_messages ADD COLUMN is_read INTEGER NOT NULL DEFAULT 0`, args: [] });
+        }
+    } catch { }
+}
+
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     const token = req.cookies.get("session")?.value;
     const session = verifySession(token);
     if (!session || !session.role) return deny();
 
     const id = Number(params.id);
+    await ensureContactSchema();
     if (!Number.isFinite(id))
         return NextResponse.json({ success: false, message: "ID inválido" }, { status: 400 });
 
     const res = await turso.execute({
-        sql: `SELECT id, name, email, phone, subject, message, status, history FROM contact_messages WHERE id = ?`,
+        sql: `SELECT id, name, email, phone, subject, message, status, history, importance, is_read FROM contact_messages WHERE id = ?`,
         args: [id],
     });
     const row = (res as any).rows?.[0];

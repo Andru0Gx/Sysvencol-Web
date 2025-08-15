@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/sidebar";
 import { LayoutDashboard, Mail, Users } from "lucide-react";
 import LogoutButton from "@/components/admin/logout-button";
+import UnreadMessagesBadge from "@/components/admin/unread-messages-badge";
 
 export const metadata: Metadata = {
     title: "Admin | Sysvencol",
@@ -67,6 +68,7 @@ export default async function AdminLayout({
                                         <Link href="/admin/messages">
                                             <Mail />
                                             <span>Mensajes</span>
+                                            <UnreadMessagesBadge />
                                         </Link>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>

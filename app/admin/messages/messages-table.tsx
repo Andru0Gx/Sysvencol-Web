@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import useSWR from "swr";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -37,7 +38,18 @@ import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { format } from "date-fns";
 import { toast } from "sonner";
-import { Eye, Trash, MoreVertical, Clock } from "lucide-react";
+import {
+    Eye,
+    Trash,
+    MoreVertical,
+    Clock,
+    CheckCheck,
+    Undo2,
+    AlertTriangle,
+    ArrowUpDown,
+    ArrowUp,
+    ArrowDown,
+} from "lucide-react";
 
 export type Message = {
     id: number;
@@ -48,6 +60,8 @@ export type Message = {
     message: string;
     status?: "en_espera" | "en_proceso" | "completado";
     history?: any[] | string | null;
+    importance?: "alta" | "media" | "baja" | "normal";
+    is_read?: number | boolean;
 };
 
 function parseHistory(h: any): any[] {
@@ -74,46 +88,118 @@ function fmtDate(input: any) {
     }
 }
 
+const fetcher = (url: string) => fetch(url).then((r) => r.json());
+
 export default function MessagesTable() {
-    const [loading, setLoading] = useState(false);
     const [query, setQuery] = useState("");
-    const [list, setList] = useState<Message[]>([]);
-    const [total, setTotal] = useState(0);
     const [view, setView] = useState<Message | null>(null);
+    // Sorting
+    const [sortKey, setSortKey] = useState<
+        "name" | "email" | "phone" | "subject" | "importance" | "status" | null
+    >(null);
+    const [sortDir, setSortDir] = useState<"asc" | "desc">("asc");
+    // Top filters
+    const [topImportance, setTopImportance] = useState<string>("all");
+    const [topRead, setTopRead] = useState<string>("all");
 
-    const filtered = useMemo(() => list, [list]);
+    const { data, isValidating, mutate } = useSWR(
+        `/api/admin/messages?q=${encodeURIComponent(query)}`,
+        fetcher,
+        { refreshInterval: 4000, revalidateOnFocus: true }
+    );
+    const list: Message[] = useMemo(() => {
+        const rows: Message[] = (data?.data || []).map((r: any) => ({
+            ...r,
+            history: parseHistory(r.history),
+        }));
+        return rows;
+    }, [data]);
+    const total = Number(data?.total || 0);
+    const filtered = useMemo(() => {
+        const q = query.trim().toLowerCase();
+        return list.filter((m) => {
+            const isRead = !!m.is_read;
+            const imp = (m.importance || "normal").toLowerCase();
+            const st = (m.status || "").toLowerCase();
 
-    async function loadMessages() {
-        setLoading(true);
-        try {
-            const url = `/api/admin/messages?q=${encodeURIComponent(query)}`;
-            const res = await fetch(url);
-            const data = await res.json();
-            if (!res.ok || !data.success)
-                throw new Error(data.message || "Error");
-            const rows: Message[] = (data.data || []).map((r: any) => ({
-                ...r,
-                history: parseHistory(r.history),
-            }));
-            setList(rows);
-            setTotal(data.total || 0);
-        } catch (e: any) {
-            toast.error(e.message || "Error cargando mensajes");
-        } finally {
-            setLoading(false);
+            // Global search
+            const matchesQ = !q
+                || m.name.toLowerCase().includes(q)
+                || m.email.toLowerCase().includes(q)
+                || m.phone.toLowerCase().includes(q)
+                || m.subject.toLowerCase().includes(q)
+                || m.message.toLowerCase().includes(q);
+
+            // Top filters
+            const matchesTopImp = topImportance === "all" || imp === topImportance;
+            const matchesTopRead = topRead === "all" || (topRead === "read" ? isRead : !isRead);
+
+            return matchesQ && matchesTopImp && matchesTopRead;
+        });
+    }, [list, query, topImportance, topRead]);
+
+    const displayed = useMemo(() => {
+        if (!sortKey) return filtered;
+        const impW: Record<string, number> = { baja: 0, normal: 1, media: 2, alta: 3 };
+        const stW: Record<string, number> = { en_espera: 0, en_proceso: 1, completado: 2 };
+        const arr = [...filtered];
+        arr.sort((a, b) => {
+            let av: any;
+            let bv: any;
+            switch (sortKey) {
+                case "importance":
+                    av = impW[String(a.importance || "normal").toLowerCase()] ?? 1;
+                    bv = impW[String(b.importance || "normal").toLowerCase()] ?? 1;
+                    break;
+                case "status":
+                    av = stW[String(a.status || "en_espera").toLowerCase()] ?? 0;
+                    bv = stW[String(b.status || "en_espera").toLowerCase()] ?? 0;
+                    break;
+                case "name":
+                    av = String(a.name || "").toLowerCase();
+                    bv = String(b.name || "").toLowerCase();
+                    break;
+                case "email":
+                    av = String(a.email || "").toLowerCase();
+                    bv = String(b.email || "").toLowerCase();
+                    break;
+                case "phone":
+                    av = String(a.phone || "").toLowerCase();
+                    bv = String(b.phone || "").toLowerCase();
+                    break;
+                case "subject":
+                    av = String(a.subject || "").toLowerCase();
+                    bv = String(b.subject || "").toLowerCase();
+                    break;
+                default:
+                    av = 0;
+                    bv = 0;
+            }
+            let cmp = 0;
+            if (typeof av === "number" && typeof bv === "number") cmp = av - bv;
+            else cmp = String(av).localeCompare(String(bv));
+            return sortDir === "asc" ? cmp : -cmp;
+        });
+        return arr;
+    }, [filtered, sortKey, sortDir]);
+
+    function toggleSort(key: NonNullable<typeof sortKey>) {
+        if (sortKey === key) {
+            setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+        } else {
+            setSortKey(key);
+            setSortDir("asc");
         }
     }
 
-    useEffect(() => {
-        loadMessages();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-    useEffect(() => {
-        const t = setTimeout(() => loadMessages(), 350);
-        return () => clearTimeout(t);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [query]);
+    function SortIcon({ k }: { k: NonNullable<typeof sortKey> }) {
+        if (sortKey !== k) return <ArrowUpDown className="ml-1 h-3.5 w-3.5 opacity-60" />;
+        return sortDir === "asc" ? (
+            <ArrowUp className="ml-1 h-3.5 w-3.5" />
+        ) : (
+            <ArrowDown className="ml-1 h-3.5 w-3.5" />
+        );
+    }
 
     async function removeMessage(m: Message) {
         if (!confirm(`¿Eliminar el mensaje de ${m.name}?`)) return;
@@ -125,7 +211,7 @@ export default function MessagesTable() {
             if (!res.ok || !data.success)
                 throw new Error(data.message || "Error");
             toast.success("Mensaje eliminado");
-            loadMessages();
+            mutate();
         } catch (e: any) {
             toast.error(e.message || "Error eliminando");
         }
@@ -142,9 +228,42 @@ export default function MessagesTable() {
             if (!res.ok || !data.success)
                 throw new Error(data.message || "Error");
             toast.success("Estado actualizado");
-            loadMessages();
+            mutate();
         } catch (e: any) {
             toast.error(e.message || "No se pudo actualizar el estado");
+        }
+    }
+
+    async function setImportance(id: number, imp: string) {
+        try {
+            const res = await fetch(`/api/admin/messages`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, importance: imp }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success)
+                throw new Error(data.message || "Error");
+            toast.success("Importancia actualizada");
+            mutate();
+        } catch (e: any) {
+            toast.error(e.message || "No se pudo actualizar la importancia");
+        }
+    }
+
+    async function markRead(id: number, read: boolean) {
+        try {
+            const res = await fetch(`/api/admin/messages`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, is_read: read }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.success)
+                throw new Error(data.message || "Error");
+            mutate();
+        } catch (e: any) {
+            toast.error(e.message || "No se pudo actualizar");
         }
     }
 
@@ -178,12 +297,36 @@ export default function MessagesTable() {
     return (
         <div className="space-y-4">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <Input
-                    placeholder="Buscar por nombre, correo, teléfono, asunto o contenido"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    className="w-full sm:max-w-md"
-                />
+                <div className="flex w-full gap-2">
+                    <Input
+                        placeholder="Buscar por nombre, correo, teléfono, asunto o contenido"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        className="w-full sm:max-w-md"
+                    />
+                    <Select value={topImportance} onValueChange={setTopImportance}>
+                        <SelectTrigger className="w-[150px]">
+                            <SelectValue placeholder="Importancia" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">Todas</SelectItem>
+                            <SelectItem value="alta">Alta</SelectItem>
+                            <SelectItem value="media">Media</SelectItem>
+                            <SelectItem value="baja">Baja</SelectItem>
+                            <SelectItem value="normal">Normal</SelectItem>
+                        </SelectContent>
+                    </Select>
+                    <Select value={topRead} onValueChange={setTopRead}>
+                        <SelectTrigger className="w-[150px]">
+                            <SelectValue placeholder="Leídos" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">Todos</SelectItem>
+                            <SelectItem value="unread">No leídos</SelectItem>
+                            <SelectItem value="read">Leídos</SelectItem>
+                        </SelectContent>
+                    </Select>
+                </div>
             </div>
 
             <Card>
@@ -192,19 +335,58 @@ export default function MessagesTable() {
                         <TableHeader>
                             <TableRow>
                                 <TableHead className="text-muted-foreground">
-                                    Nombre
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center"
+                                        onClick={() => toggleSort("name")}
+                                    >
+                                        Nombre <SortIcon k="name" />
+                                    </button>
                                 </TableHead>
                                 <TableHead className="text-muted-foreground">
-                                    Correo
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center"
+                                        onClick={() => toggleSort("email")}
+                                    >
+                                        Correo <SortIcon k="email" />
+                                    </button>
                                 </TableHead>
                                 <TableHead className="text-muted-foreground">
-                                    Teléfono
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center"
+                                        onClick={() => toggleSort("phone")}
+                                    >
+                                        Teléfono <SortIcon k="phone" />
+                                    </button>
                                 </TableHead>
                                 <TableHead className="text-muted-foreground">
-                                    Asunto
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center"
+                                        onClick={() => toggleSort("subject")}
+                                    >
+                                        Asunto <SortIcon k="subject" />
+                                    </button>
                                 </TableHead>
                                 <TableHead className="text-muted-foreground">
-                                    Estado
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center"
+                                        onClick={() => toggleSort("importance")}
+                                    >
+                                        Importancia <SortIcon k="importance" />
+                                    </button>
+                                </TableHead>
+                                <TableHead className="text-muted-foreground">
+                                    <button
+                                        type="button"
+                                        className="inline-flex items-center"
+                                        onClick={() => toggleSort("status")}
+                                    >
+                                        Estado <SortIcon k="status" />
+                                    </button>
                                 </TableHead>
                                 <TableHead className="text-right text-muted-foreground">
                                     Acciones
@@ -212,9 +394,18 @@ export default function MessagesTable() {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
-                            {filtered.map((m) => (
-                                <TableRow key={m.id}>
-                                    <TableCell>{m.name}</TableCell>
+                            {displayed.map((m) => (
+                                <TableRow
+                                    key={m.id}
+                                    className={!m.is_read ? "bg-red-50/40" : ""}
+                                >
+                                    <TableCell
+                                        className={
+                                            !m.is_read ? "font-semibold" : ""
+                                        }
+                                    >
+                                        {m.name}
+                                    </TableCell>
                                     <TableCell className="text-muted-foreground">
                                         {m.email}
                                     </TableCell>
@@ -223,6 +414,28 @@ export default function MessagesTable() {
                                     </TableCell>
                                     <TableCell className="text-muted-foreground">
                                         {m.subject}
+                                    </TableCell>
+                                    <TableCell>
+                                        <Badge
+                                            variant={
+                                                m.importance === "alta"
+                                                    ? "destructive"
+                                                    : m.importance === "media"
+                                                    ? "secondary"
+                                                    : "outline"
+                                            }
+                                            className={
+                                                m.importance === "alta"
+                                                    ? "bg-red-600 text-white"
+                                                    : m.importance === "media"
+                                                    ? "bg-amber-200 text-amber-900"
+                                                    : m.importance === "baja"
+                                                    ? "bg-slate-200 text-slate-800"
+                                                    : ""
+                                            }
+                                        >
+                                            {m.importance || "normal"}
+                                        </Badge>
                                     </TableCell>
                                     <TableCell>
                                         {statusBadge(m.status)}
@@ -243,10 +456,33 @@ export default function MessagesTable() {
                                             </DropdownMenuTrigger>
                                             <DropdownMenuContent align="end">
                                                 <DropdownMenuItem
-                                                    onClick={() => setView(m)}
+                                                    onClick={() => {
+                                                        setView(m);
+                                                        if (!m.is_read)
+                                                            markRead(
+                                                                m.id,
+                                                                true
+                                                            );
+                                                    }}
                                                 >
                                                     <Eye className="h-4 w-4 mr-2" />{" "}
                                                     Ver
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem
+                                                    onClick={() =>
+                                                        markRead(m.id, true)
+                                                    }
+                                                >
+                                                    <CheckCheck className="h-4 w-4 mr-2" />{" "}
+                                                    Marcar como leído
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem
+                                                    onClick={() =>
+                                                        markRead(m.id, false)
+                                                    }
+                                                >
+                                                    <Undo2 className="h-4 w-4 mr-2" />{" "}
+                                                    Marcar como no leído
                                                 </DropdownMenuItem>
                                                 <DropdownMenuItem asChild>
                                                     <div className="flex w-full items-center gap-2">
@@ -282,6 +518,43 @@ export default function MessagesTable() {
                                                         </Select>
                                                     </div>
                                                 </DropdownMenuItem>
+                                                <DropdownMenuItem asChild>
+                                                    <div className="flex w-full items-center gap-2">
+                                                        <AlertTriangle className="h-4 w-4 opacity-70" />
+                                                        <Select
+                                                            onValueChange={(
+                                                                v
+                                                            ) =>
+                                                                setImportance(
+                                                                    m.id,
+                                                                    v
+                                                                )
+                                                            }
+                                                            defaultValue={
+                                                                m.importance ||
+                                                                "normal"
+                                                            }
+                                                        >
+                                                            <SelectTrigger className="h-8 w-[160px]">
+                                                                <SelectValue placeholder="Importancia" />
+                                                            </SelectTrigger>
+                                                            <SelectContent>
+                                                                <SelectItem value="alta">
+                                                                    Alta
+                                                                </SelectItem>
+                                                                <SelectItem value="media">
+                                                                    Media
+                                                                </SelectItem>
+                                                                <SelectItem value="baja">
+                                                                    Baja
+                                                                </SelectItem>
+                                                                <SelectItem value="normal">
+                                                                    Normal
+                                                                </SelectItem>
+                                                            </SelectContent>
+                                                        </Select>
+                                                    </div>
+                                                </DropdownMenuItem>
                                                 <DropdownMenuItem
                                                     className="text-destructive focus:text-destructive"
                                                     onClick={() =>
@@ -299,10 +572,10 @@ export default function MessagesTable() {
                             {filtered.length === 0 && (
                                 <TableRow>
                                     <TableCell
-                                        colSpan={6}
+                                        colSpan={7}
                                         className="text-center text-sm text-muted-foreground"
                                     >
-                                        {loading
+                                        {isValidating
                                             ? "Cargando..."
                                             : "Sin resultados"}
                                     </TableCell>

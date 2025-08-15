@@ -13,7 +13,7 @@ const turso = createClient({
 async function ensureContactSchema() {
     // Try selecting the columns; if they don't exist, add them.
     try {
-        await turso.execute({ sql: `SELECT status, history FROM contact_messages LIMIT 1`, args: [] });
+        await turso.execute({ sql: `SELECT status, history, importance, is_read FROM contact_messages LIMIT 1`, args: [] });
         return; // Both columns exist
     } catch {
         // Add status column if missing
@@ -23,6 +23,14 @@ async function ensureContactSchema() {
         // Add history column if missing
         try {
             await turso.execute({ sql: `ALTER TABLE contact_messages ADD COLUMN history TEXT`, args: [] });
+        } catch { }
+        // Add importance column if missing
+        try {
+            await turso.execute({ sql: `ALTER TABLE contact_messages ADD COLUMN importance TEXT NOT NULL DEFAULT 'normal'`, args: [] });
+        } catch { }
+        // Add is_read column if missing (0=false, 1=true)
+        try {
+            await turso.execute({ sql: `ALTER TABLE contact_messages ADD COLUMN is_read INTEGER NOT NULL DEFAULT 0`, args: [] });
         } catch { }
     }
 }
@@ -36,6 +44,8 @@ export async function POST(req: NextRequest) {
     const status = ((rawStatus || "en_espera") as string)
         .toLowerCase()
         .replace(/\s+/g, "_") as Estado;
+    const rawImportance: string | undefined = (body.importance || body.prioridad || body.priority);
+    const importance = String(rawImportance || "normal").toLowerCase();
 
     // Validación de campos obligatorios
     if (!name?.trim() || !email?.trim() || !phone?.trim() || !subject?.trim() || !message?.trim()) {
@@ -75,8 +85,8 @@ export async function POST(req: NextRequest) {
         ]);
 
         await turso.execute({
-            sql: `INSERT INTO contact_messages (name, email, phone, subject, message, status, history) VALUES (?, ?, ?, ?, ?, ?, ?)`,
-            args: [name, email, phone, subject, message, status, history],
+            sql: `INSERT INTO contact_messages (name, email, phone, subject, message, status, history, importance, is_read) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)`,
+            args: [name, email, phone, subject, message, status, history, importance],
         });
         return NextResponse.json({ success: true });
     } catch (error) {
